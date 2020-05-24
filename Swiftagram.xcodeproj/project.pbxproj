@@ -15,6 +15,7 @@
 		02F94D96247A649400887DAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D94247A649400887DAD /* LaunchScreen.storyboard */; };
 		02F94D9E247A780400887DAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D9D247A780400887DAD /* Extensions.swift */; };
 		02F94DA0247A798C00887DAD /* FontsFree-Net-Billabong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D9F247A798B00887DAD /* FontsFree-Net-Billabong.ttf */; };
+		02F94DA3247A8B4D00887DAD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		02F94D97247A649400887DAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02F94D9D247A780400887DAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		02F94D9F247A798B00887DAD /* FontsFree-Net-Billabong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-Billabong.ttf"; sourceTree = "<group>"; };
+		02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				02F94D94247A649400887DAD /* LaunchScreen.storyboard */,
 				02F94D8F247A649000887DAD /* Main.storyboard */,
 				02F94D8D247A649000887DAD /* SignInViewController.swift */,
+				02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */,
 				02F94D9D247A780400887DAD /* Extensions.swift */,
 				02F94D92247A649400887DAD /* Assets.xcassets */,
 				02F94D97247A649400887DAD /* Info.plist */,
@@ -157,6 +160,7 @@
 				02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */,
 				02F94D8C247A649000887DAD /* SceneDelegate.swift in Sources */,
 				02F94D9E247A780400887DAD /* Extensions.swift in Sources */,
+				02F94DA3247A8B4D00887DAD /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
