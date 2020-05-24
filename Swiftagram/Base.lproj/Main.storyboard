@@ -63,6 +63,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qTU-Ij-BZD"/>
+                                    <segue destination="KRU-ZF-jba" kind="presentation" modalPresentationStyle="fullScreen" id="io2-SZ-sJt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qt-u6-Iq6">
@@ -117,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="117"/>
+            <point key="canvasLocation" x="457" y="117"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Mo2-8G-F0F">
@@ -197,7 +198,7 @@
                                     <action selector="haveAccountSignInPressed:" destination="3Cp-5i-SnC" eventType="touchUpInside" id="Wbc-gX-1NH"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Kaq-eK-kcC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileImage" translatesAutoresizingMaskIntoConstraints="NO" id="Kaq-eK-kcC">
                                 <rect key="frame" x="157" y="54" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="EeJ-Zz-RwI"/>
@@ -238,10 +239,116 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNt-vE-s0Z" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848" y="117"/>
+            <point key="canvasLocation" x="457" y="920"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qEA-ha-f8E">
+            <objects>
+                <tabBarController modalPresentationStyle="fullScreen" id="KRU-ZF-jba" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Slw-fT-ZBx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oIl-5g-ZZJ" kind="relationship" relationship="viewControllers" id="YOD-46-cKd"/>
+                        <segue destination="YTy-DE-EPR" kind="relationship" relationship="viewControllers" id="8T8-hk-13x"/>
+                        <segue destination="DIa-FR-LPj" kind="relationship" relationship="viewControllers" id="mKy-xk-PW0"/>
+                        <segue destination="x1N-P5-F2e" kind="relationship" relationship="viewControllers" id="vCe-NC-ya6"/>
+                        <segue destination="inQ-l6-cBG" kind="relationship" relationship="viewControllers" id="hDD-0C-dvH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oiC-Mt-yVI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="117"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="PgB-Oh-jRq">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="oIl-5g-ZZJ" customClass="HomeViewController" customModule="Swiftagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sVt-v5-Flj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Bxy-Cq-ijR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home" id="rL2-vc-tdE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wiu-cL-64v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="-674"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="U9g-oo-KxT">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="YTy-DE-EPR" customClass="DiscoverViewController" customModule="Swiftagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yJy-kk-gsT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="bBr-oX-9b1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Discover" image="Search" id="PFB-jK-Ogd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KtL-Fd-X92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="-669"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="gSn-H7-6uK">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="inQ-l6-cBG" customClass="ProfileViewController" customModule="Swiftagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fvj-ND-FQY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="vig-ru-zwV"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="3YX-Ck-71e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hB-Y5-6Gn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="921"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="0dA-U9-Nb9">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="DIa-FR-LPj" customClass="CameraViewController" customModule="Swiftagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hIM-9t-7hr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="uWL-R0-MCO"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" image="New" id="gbK-e6-jiq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wjF-1P-wQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="117"/>
+        </scene>
+        <!--Activity-->
+        <scene sceneID="C99-mW-kSD">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="x1N-P5-F2e" customClass="ActivityViewController" customModule="Swiftagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edQ-f8-rae">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="q7r-7H-lXS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Activity" image="Heart" id="pjN-pV-ppZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wNT-m6-9Zb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="920"/>
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="100" height="100"/>
+        <image name="Heart" width="25" height="23"/>
+        <image name="Home" width="23" height="26"/>
+        <image name="New" width="25" height="28"/>
+        <image name="Profile" width="23" height="27"/>
+        <image name="Search" width="24" height="25"/>
+        <image name="profileImage" width="100" height="100"/>
     </resources>
 </document>
