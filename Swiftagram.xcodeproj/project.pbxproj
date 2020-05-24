@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D89247A649000887DAD /* AppDelegate.swift */; };
 		02F94D8C247A649000887DAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D8B247A649000887DAD /* SceneDelegate.swift */; };
-		02F94D8E247A649000887DAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D8D247A649000887DAD /* ViewController.swift */; };
+		02F94D8E247A649000887DAD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D8D247A649000887DAD /* SignInViewController.swift */; };
 		02F94D91247A649000887DAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D8F247A649000887DAD /* Main.storyboard */; };
 		02F94D93247A649400887DAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D92247A649400887DAD /* Assets.xcassets */; };
 		02F94D96247A649400887DAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D94247A649400887DAD /* LaunchScreen.storyboard */; };
+		02F94D9E247A780400887DAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D9D247A780400887DAD /* Extensions.swift */; };
+		02F94DA0247A798C00887DAD /* FontsFree-Net-Billabong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F94D9F247A798B00887DAD /* FontsFree-Net-Billabong.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02F94D86247A649000887DAD /* Swiftagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F94D89247A649000887DAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02F94D8B247A649000887DAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02F94D8D247A649000887DAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		02F94D8D247A649000887DAD /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		02F94D90247A649000887DAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02F94D92247A649400887DAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02F94D95247A649400887DAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02F94D97247A649400887DAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02F94D9D247A780400887DAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		02F94D9F247A798B00887DAD /* FontsFree-Net-Billabong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-Billabong.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 		02F94D7D247A649000887DAD = {
 			isa = PBXGroup;
 			children = (
+				02F94DA1247A799100887DAD /* Fonts */,
 				02F94D88247A649000887DAD /* Swiftagram */,
 				02F94D87247A649000887DAD /* Products */,
 			);
@@ -58,13 +63,22 @@
 			children = (
 				02F94D89247A649000887DAD /* AppDelegate.swift */,
 				02F94D8B247A649000887DAD /* SceneDelegate.swift */,
-				02F94D8D247A649000887DAD /* ViewController.swift */,
-				02F94D8F247A649000887DAD /* Main.storyboard */,
-				02F94D92247A649400887DAD /* Assets.xcassets */,
 				02F94D94247A649400887DAD /* LaunchScreen.storyboard */,
+				02F94D8F247A649000887DAD /* Main.storyboard */,
+				02F94D8D247A649000887DAD /* SignInViewController.swift */,
+				02F94D9D247A780400887DAD /* Extensions.swift */,
+				02F94D92247A649400887DAD /* Assets.xcassets */,
 				02F94D97247A649400887DAD /* Info.plist */,
 			);
 			path = Swiftagram;
+			sourceTree = "<group>";
+		};
+		02F94DA1247A799100887DAD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				02F94D9F247A798B00887DAD /* FontsFree-Net-Billabong.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +141,7 @@
 			files = (
 				02F94D96247A649400887DAD /* LaunchScreen.storyboard in Resources */,
 				02F94D93247A649400887DAD /* Assets.xcassets in Resources */,
+				02F94DA0247A798C00887DAD /* FontsFree-Net-Billabong.ttf in Resources */,
 				02F94D91247A649000887DAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02F94D8E247A649000887DAD /* ViewController.swift in Sources */,
+				02F94D8E247A649000887DAD /* SignInViewController.swift in Sources */,
 				02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */,
 				02F94D8C247A649000887DAD /* SceneDelegate.swift in Sources */,
+				02F94D9E247A780400887DAD /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
