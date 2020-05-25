@@ -63,7 +63,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qTU-Ij-BZD"/>
-                                    <segue destination="KRU-ZF-jba" kind="presentation" modalPresentationStyle="fullScreen" id="io2-SZ-sJt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qt-u6-Iq6">
@@ -184,7 +183,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KRU-ZF-jba" kind="presentation" modalPresentationStyle="fullScreen" id="lNr-Lt-HPS"/>
+                                    <action selector="signUpBtn:" destination="3Cp-5i-SnC" eventType="touchUpInside" id="nch-mb-BmU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUj-BT-dh6">
@@ -441,9 +440,6 @@
             <point key="canvasLocation" x="1383" y="920"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="lNr-Lt-HPS"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Heart" width="25" height="23"/>
         <image name="HeartSel" width="26" height="25"/>

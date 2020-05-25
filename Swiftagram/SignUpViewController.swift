@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
     
@@ -48,6 +49,45 @@ class SignUpViewController: UIViewController {
         
     }
     
+    @IBAction func signUpBtn(_ sender: UIButton) {
+        
+        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
+            print("Invalid Form Input")
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+            
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            guard let uid = user?.user.uid else {
+                return
+            }
+            
+            // Successfully registered user
+            let ref = Database.database().reference()
+            let usersReference = ref.child("users").child(uid)
+            let values = ["name": name, "email": email]
+            usersReference.updateChildValues(values) { (err, ref) in
+                
+                if err != nil {
+                    print(err!)
+                    return
+                }
+                
+                print("Saved user successfully into Firebase database")
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+            
+        })
+        
+    }
+    
     @IBAction func haveAccountSignInPressed(_ sender: UIButton) {
         
         dismiss(animated: true, completion: nil)
@@ -64,4 +104,4 @@ class SignUpViewController: UIViewController {
         
     }
 
-}   // #68
+}   // #108
