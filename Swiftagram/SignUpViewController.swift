@@ -19,8 +19,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet var backToSignInOutLet: UIButton!
     @IBOutlet var profileImage: UIImageView!
     
+    // global variable for selected image
     var selectedImage: UIImage?
     
+    // image that appears on screen as profile image for user
+    // an Optional
     var image: UIImage? = nil
     
     func Colors() {
@@ -56,40 +59,51 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpBtn(_ sender: UIButton) {
         
+        // validations
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
             print("Invalid Form Input")
             return
         }
+        // selected image should be from image
         guard let imageSelected = self.image else {
             print("Avatar is nil")
             return
         }
+        // image data from seleceted image in jpeg format
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
             return
         }
         
+        // Firebase Auth
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil {
                 print(error!)
                 return
             }
+            // unique user id
             guard let uid = user?.user.uid else {
                 return
             }
-            // Storage
+            
+            // Firebase Storage
+            // reference url
             let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com")
             let storageProfileRef = storageRef.child("profile_image").child(uid)
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpg"
+            // put image data
             storageProfileRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
                 if error != nil {
                     print(error!)
                     return
                 }
+                // get download url for image from Firebase Storage
                 storageProfileRef.downloadURL { (url, error) in
+                    // convert that download url to string
                     if let metaImageUrl = url?.absoluteString {
                         print(metaImageUrl)
+                        // put that download url string in db
                         let values = ["name": name, "email": email, "profileImgUrl": metaImageUrl]
                         let databaseRef = Database.database().reference().child("users").child(uid)
                         databaseRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
@@ -124,8 +138,11 @@ class SignUpViewController: UIViewController {
     
     func ProfileImage() {
         
+        // Profile image properties
         profileImage.layer.cornerRadius = 50
         profileImage.layer.masksToBounds = true
+        
+        // Add gesture for profile image present in screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView))
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
@@ -135,8 +152,9 @@ class SignUpViewController: UIViewController {
     @objc func handleSelectProfileImageView() {
         
         let pickerController = UIImagePickerController()
-        // To get access to selected media files
+        // To get access to selected media files, add delegate
         pickerController.delegate = self
+        // present photo library
         present(pickerController, animated: true, completion: nil)
         
     }
@@ -147,19 +165,21 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected from library")
-        // Selected photo to display it in our profile image
+        // Selected image to display it in our profile image
         if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            // set profile image's imageView to selected image
             profileImage.image = imageSelected
             // Store this img in an instance variable
             image = imageSelected
         }
+        // Original image
         if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // set profile image's imageView to original image
             profileImage.image = imageOriginal
             // Store this img in an instance variable
             image = imageOriginal
         }
-        // print(info)
         dismiss(animated: true, completion: nil)
     }
     
-}   // #166
+}   // #186
