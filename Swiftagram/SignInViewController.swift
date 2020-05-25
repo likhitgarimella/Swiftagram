@@ -65,6 +65,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func signUpPressed(_ sender: UIButton) {
         
+        // segue to signup VC
         self.performSegue(withIdentifier: "goToSignUp", sender: self)
         
     }
@@ -77,6 +78,17 @@ class SignInViewController: UIViewController {
         CornerRadius()
         LeftPadding()
         handleTextField()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if Auth.auth().currentUser != nil {
+            print("Current user: \(Auth.auth().currentUser)")
+            // segue to tab bar VC
+            self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
+        }
         
     }
     
@@ -100,4 +112,4 @@ class SignInViewController: UIViewController {
         
     }
 
-}   // #104
+}   // #116
