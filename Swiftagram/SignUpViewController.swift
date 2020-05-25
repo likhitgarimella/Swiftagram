@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController {
     
     var selectedImage: UIImage?
     
+    var image: UIImage? = nil
+    
     func Colors() {
         
         view.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
@@ -58,6 +60,13 @@ class SignUpViewController: UIViewController {
             print("Invalid Form Input")
             return
         }
+        guard let imageSelected = self.image else {
+            print("Avatar is nil")
+            return
+        }
+        guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
+            return
+        }
         
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             
@@ -68,36 +77,28 @@ class SignUpViewController: UIViewController {
             guard let uid = user?.user.uid else {
                 return
             }
-            
             // Storage
-            let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com").child("profile_image").child(uid)
-            if let profileImg = self.selectedImage, let imageData = profileImg.jpegData(compressionQuality: 0.1) {
-                
-                storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
-                    
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-                    // Url where our data lives
-                    metadata?.storageReference?.downloadURL(completion: { (url, err1) in
-                        
-                        if err1 != nil {
-                            print(err1!)
-                            return
-                        } else {
-                            // Successfully registered user
-                            let ref = Database.database().reference()
-                            let usersReference = ref.child("users").child(uid)
-                            if let profileImageUrl = url?.absoluteString {
-                                let values = ["name": name, "email": email, "profileImgUrl": profileImageUrl]
-                                usersReference.setValue(values)
+            let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com")
+            let storageProfileRef = storageRef.child("profile_image").child(uid)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            storageProfileRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                storageProfileRef.downloadURL { (url, error) in
+                    if let metaImageUrl = url?.absoluteString {
+                        print(metaImageUrl)
+                        let values = ["name": name, "email": email, "profileImgUrl": metaImageUrl]
+                        let databaseRef = Database.database().reference().child("users").child(uid)
+                        databaseRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
+                            if error == nil {
+                                print("Done")
                             }
-                        }
-                    })
-                    
-                })
-                
+                        })
+                    }
+                }
             }
             
         })
@@ -147,13 +148,18 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected from library")
         // Selected photo to display it in our profile image
-        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
-            profileImage.image = image
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profileImage.image = imageSelected
             // Store this img in an instance variable
-            selectedImage = image
+            image = imageSelected
+        }
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImage.image = imageOriginal
+            // Store this img in an instance variable
+            image = imageOriginal
         }
         // print(info)
         dismiss(animated: true, completion: nil)
     }
     
-}   // #160
+}   // #166
