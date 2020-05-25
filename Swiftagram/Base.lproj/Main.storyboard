@@ -368,7 +368,7 @@
         <scene sceneID="G2U-xt-OjZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rw8-Tf-H7f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Search" id="PFB-jK-Ogd"/>
+                    <tabBarItem key="tabBarItem" title="" image="Search" selectedImage="SearchSel" id="PFB-jK-Ogd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lpM-kx-bOv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -387,7 +387,7 @@
         <scene sceneID="F06-Be-tCg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8xR-4r-t4g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="New" id="gbK-e6-jiq"/>
+                    <tabBarItem key="tabBarItem" title="" image="New" selectedImage="NewSel" id="gbK-e6-jiq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nle-cL-vXc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -406,7 +406,7 @@
         <scene sceneID="SZW-LA-s3t">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0U8-dw-uaa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Heart" id="pjN-pV-ppZ"/>
+                    <tabBarItem key="tabBarItem" title="" image="Heart" selectedImage="HeartSel" id="pjN-pV-ppZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jr9-vG-z33">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -425,7 +425,7 @@
         <scene sceneID="SeN-IY-NYX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5eH-Sc-MWm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Profile" id="3YX-Ck-71e"/>
+                    <tabBarItem key="tabBarItem" title="" image="Profile" selectedImage="ProfileSel" id="3YX-Ck-71e"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aOu-Jl-FPV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -446,11 +446,15 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Heart" width="25" height="23"/>
+        <image name="HeartSel" width="26" height="25"/>
         <image name="Home" width="23" height="26"/>
         <image name="HomeSel" width="22" height="25"/>
         <image name="New" width="25" height="28"/>
+        <image name="NewSel" width="28" height="30"/>
         <image name="Profile" width="23" height="27"/>
+        <image name="ProfileSel" width="23" height="26"/>
         <image name="Search" width="24" height="25"/>
+        <image name="SearchSel" width="25" height="26"/>
         <image name="profileImage" width="100" height="100"/>
     </resources>
 </document>
