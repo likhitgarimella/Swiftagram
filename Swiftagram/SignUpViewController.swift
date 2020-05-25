@@ -132,7 +132,29 @@ class SignUpViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         CornerRadius()
         LeftPadding()
+        handleTextField()
         ProfileImage()
+        
+    }
+    
+    func handleTextField() {
+        
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+    }
+    
+    @objc func textFieldDidChange() {
+        
+        guard let username = nameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+            signUpOutLet.setTitleColor(UIColor.lightText, for: .normal)
+            signUpOutLet.isEnabled = false
+            return
+        }
+        
+        signUpOutLet.setTitleColor(UIColor.white, for: .normal)
+        signUpOutLet.isEnabled = true
         
     }
     
@@ -182,4 +204,4 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #186
+}   // #208
