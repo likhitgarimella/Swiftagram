@@ -110,6 +110,8 @@ class SignUpViewController: UIViewController {
                             if error == nil {
                                 print("Done")
                             }
+                            // segue to tab bar VC
+                            self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)
                         })
                     }
                 }
@@ -204,4 +206,4 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #208
+}   // #210

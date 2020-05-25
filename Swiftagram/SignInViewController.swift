@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
     
@@ -46,7 +47,19 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInPressed(_ sender: UIButton) {
         
-        
+        // validations
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Invalid Form Input")
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            // segue to tab bar VC
+            self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
+        }
         
     }
     
@@ -63,7 +76,28 @@ class SignInViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         CornerRadius()
         LeftPadding()
+        handleTextField()
+        
+    }
+    
+    func handleTextField() {
+        
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+    }
+    
+    @objc func textFieldDidChange() {
+        
+        guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+            signInOutLet.setTitleColor(UIColor.lightText, for: .normal)
+            signInOutLet.isEnabled = false
+            return
+        }
+        
+        signInOutLet.setTitleColor(UIColor.white, for: .normal)
+        signInOutLet.isEnabled = true
         
     }
 
-}   // #70
+}   // #104
