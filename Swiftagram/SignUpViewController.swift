@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet var backToSignInOutLet: UIButton!
     @IBOutlet var profileImage: UIImageView!
     
+    var selectedImage: UIImage?
+    
     func Colors() {
         
         view.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 151/255, alpha: 1)
@@ -56,7 +58,9 @@ class SignUpViewController: UIViewController {
             print("Invalid Form Input")
             return
         }
+        
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+            
             if error != nil {
                 print(error!)
                 return
@@ -64,18 +68,38 @@ class SignUpViewController: UIViewController {
             guard let uid = user?.user.uid else {
                 return
             }
-            // Successfully registered user
-            let ref = Database.database().reference()
-            let usersReference = ref.child("users").child(uid)
-            let values = ["name": name, "email": email]
-            usersReference.updateChildValues(values) { (err, ref) in
-                if err != nil {
-                    print(err!)
-                    return
-                }
-                print("Saved user successfully into Firebase database")
-                self.dismiss(animated: true, completion: nil)
+            
+            // Storage
+            let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com").child("profile_image").child(uid)
+            if let profileImg = self.selectedImage, let imageData = profileImg.jpegData(compressionQuality: 0.1) {
+                
+                storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+                    
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    // Url where our data lives
+                    metadata?.storageReference?.downloadURL(completion: { (url, err1) in
+                        
+                        if err1 != nil {
+                            print(err1!)
+                            return
+                        } else {
+                            // Successfully registered user
+                            let ref = Database.database().reference()
+                            let usersReference = ref.child("users").child(uid)
+                            if let profileImageUrl = url?.absoluteString {
+                                let values = ["name": name, "email": email, "profileImgUrl": profileImageUrl]
+                                usersReference.setValue(values)
+                            }
+                        }
+                    })
+                    
+                })
+                
             }
+            
         })
         
     }
@@ -99,6 +123,8 @@ class SignUpViewController: UIViewController {
     
     func ProfileImage() {
         
+        profileImage.layer.cornerRadius = 50
+        profileImage.layer.masksToBounds = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView))
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
@@ -108,6 +134,8 @@ class SignUpViewController: UIViewController {
     @objc func handleSelectProfileImageView() {
         
         let pickerController = UIImagePickerController()
+        // To get access to selected media files
+        pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
         
     }
@@ -117,7 +145,15 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        print("Image selected from library")
+        // Selected photo to display it in our profile image
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
+            profileImage.image = image
+            // Store this img in an instance variable
+            selectedImage = image
+        }
+        // print(info)
+        dismiss(animated: true, completion: nil)
     }
     
-}   // #124
+}   // #160
