@@ -236,6 +236,7 @@
                         <outlet property="emailTextField" destination="cot-iI-je3" id="KBA-4B-rWg"/>
                         <outlet property="nameTextField" destination="fCr-bB-qVn" id="ito-kS-k4C"/>
                         <outlet property="passwordTextField" destination="35i-OO-t2r" id="kIn-ny-j40"/>
+                        <outlet property="profileImage" destination="Kaq-eK-kcC" id="CSP-ET-wnj"/>
                         <outlet property="signUpOutLet" destination="Lho-xN-YND" id="RZT-P7-9FX"/>
                     </connections>
                 </viewController>

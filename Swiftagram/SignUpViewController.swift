@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var signUpOutLet: UIButton!
     @IBOutlet var backToSignInOutLet: UIButton!
+    @IBOutlet var profileImage: UIImageView!
     
     func Colors() {
         
@@ -55,35 +56,26 @@ class SignUpViewController: UIViewController {
             print("Invalid Form Input")
             return
         }
-        
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
             if error != nil {
                 print(error!)
                 return
             }
-            
             guard let uid = user?.user.uid else {
                 return
             }
-            
             // Successfully registered user
             let ref = Database.database().reference()
             let usersReference = ref.child("users").child(uid)
             let values = ["name": name, "email": email]
             usersReference.updateChildValues(values) { (err, ref) in
-                
                 if err != nil {
                     print(err!)
                     return
                 }
-                
                 print("Saved user successfully into Firebase database")
-                
                 self.dismiss(animated: true, completion: nil)
-                
             }
-            
         })
         
     }
@@ -101,7 +93,31 @@ class SignUpViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         CornerRadius()
         LeftPadding()
+        ProfileImage()
+        
+    }
+    
+    func ProfileImage() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView))
+        profileImage.addGestureRecognizer(tapGesture)
+        profileImage.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func handleSelectProfileImageView() {
+        
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
         
     }
 
-}   // #108
+}
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+    }
+    
+}   // #124
