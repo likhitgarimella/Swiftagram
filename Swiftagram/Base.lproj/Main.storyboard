@@ -322,14 +322,65 @@
                     <view key="view" contentMode="scaleToFill" id="hIM-9t-7hr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0VS-R9-On8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="GE7-Pf-hqc">
+                                        <rect key="frame" x="8" y="14" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="NUU-fh-aX9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghy-4R-RAT">
+                                        <rect key="frame" x="116" y="14" width="290" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+                                        <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Ghy-4R-RAT" firstAttribute="leading" secondItem="GE7-Pf-hqc" secondAttribute="trailing" constant="8" id="3d2-3P-ILg"/>
+                                    <constraint firstAttribute="height" constant="128" id="8oB-4m-eHr"/>
+                                    <constraint firstItem="GE7-Pf-hqc" firstAttribute="top" secondItem="0VS-R9-On8" secondAttribute="top" constant="14" id="97N-qO-HzR"/>
+                                    <constraint firstAttribute="bottom" secondItem="GE7-Pf-hqc" secondAttribute="bottom" constant="14" id="doA-3y-F7I"/>
+                                    <constraint firstItem="GE7-Pf-hqc" firstAttribute="leading" secondItem="0VS-R9-On8" secondAttribute="leading" constant="8" id="eQ8-Vj-LdA"/>
+                                    <constraint firstItem="Ghy-4R-RAT" firstAttribute="top" secondItem="0VS-R9-On8" secondAttribute="top" constant="14" id="onr-I9-gl4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ghy-4R-RAT" secondAttribute="bottom" constant="14" id="tPC-8M-JZx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ghy-4R-RAT" secondAttribute="trailing" constant="8" id="z5z-Av-Djq"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-bc-NwT">
+                                <rect key="frame" x="8" y="629" width="398" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gh4-St-UV6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0VS-R9-On8" firstAttribute="top" secondItem="uWL-R0-MCO" secondAttribute="top" id="Dka-OV-QQ3"/>
+                            <constraint firstItem="uWL-R0-MCO" firstAttribute="trailing" secondItem="QNq-bc-NwT" secondAttribute="trailing" constant="8" id="GFW-YS-4Mf"/>
+                            <constraint firstItem="0VS-R9-On8" firstAttribute="leading" secondItem="uWL-R0-MCO" secondAttribute="leading" id="JXj-Gb-1pM"/>
+                            <constraint firstItem="QNq-bc-NwT" firstAttribute="leading" secondItem="uWL-R0-MCO" secondAttribute="leading" constant="8" id="LFr-wx-kC8"/>
+                            <constraint firstItem="0VS-R9-On8" firstAttribute="trailing" secondItem="uWL-R0-MCO" secondAttribute="trailing" id="bAB-pj-rvx"/>
+                            <constraint firstItem="uWL-R0-MCO" firstAttribute="bottom" secondItem="QNq-bc-NwT" secondAttribute="bottom" constant="8" id="y0Z-6k-IPH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uWL-R0-MCO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="WX2-Wa-J8U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjF-1P-wQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3346" y="117"/>
+            <point key="canvasLocation" x="3344.9275362318845" y="116.57608695652175"/>
         </scene>
         <!--Activity-->
         <scene sceneID="C99-mW-kSD">
@@ -454,6 +505,7 @@
         <image name="New" width="25" height="28"/>
         <image name="NewSel" width="28" height="30"/>
         <image name="Photos" width="1024" height="1024"/>
+        <image name="Placeholder-image" width="200" height="200"/>
         <image name="Profile" width="23" height="27"/>
         <image name="ProfileSel" width="23" height="26"/>
         <image name="Search" width="24" height="25"/>
