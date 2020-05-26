@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import JGProgressHUD
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var photo: UIImageView!
     @IBOutlet var captionTextView: UITextView!
@@ -18,12 +18,29 @@ class CameraViewController: UIViewController {
     
     var selectedImage: UIImage?
     
+    // Delegate function
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    // Delegate function
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Write a caption..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
     // progress hud
     let hud1 = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
         Properties()
         
     }
@@ -31,6 +48,9 @@ class CameraViewController: UIViewController {
     func Properties() {
         
         captionTextView.backgroundColor = UIColor.white
+        captionTextView.delegate = self
+        captionTextView.text = "Write a caption..."
+        captionTextView.textColor = UIColor.lightGray
         
         // Add gesture for profile image present in screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectPhoto))
@@ -98,7 +118,7 @@ class CameraViewController: UIViewController {
         let newPostId = databaseRef.childByAutoId().key
         let newPostReference = databaseRef.child(newPostId!)
         // put that download url string in db
-        newPostReference.setValue(["photoUrl": photoUrl], withCompletionBlock: { (error, ref) in
+        newPostReference.setValue(["photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
                 // progress hud
@@ -132,4 +152,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #136
+}   // #156
