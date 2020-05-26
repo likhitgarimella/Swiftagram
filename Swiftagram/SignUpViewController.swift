@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class SignUpViewController: UIViewController {
     
@@ -59,7 +60,13 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpBtn(_ sender: UIButton) {
         
+        // dismiss keyboard
         view.endEditing(true)
+        
+        // progress hud
+        let hud1 = JGProgressHUD(style: .dark)
+        // hud1.textLabel.text = "Please Wait..."
+        hud1.show(in: self.view)
         
         // validations
         guard let email = emailTextField.text, let password = passwordTextField.text, let username = nameTextField.text else {
@@ -69,20 +76,29 @@ class SignUpViewController: UIViewController {
         // selected image should be from image
         guard let imageSelected = self.image else {
             print("Avatar is nil")
+            hud1.indicatorView = nil    // remove indicator
+            hud1.textLabel.text = "Profile image can't be empty"
+            hud1.dismiss(afterDelay: 2.0, animated: true)
             return
         }
-        // image data from seleceted image in jpeg format
+        // image data from selected image in jpeg format
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
             return
         }
         
         AuthService.signUp(username: username, email: email, password: password, imageData: imageData, onSuccess: {
             print("On Success")
+            hud1.indicatorView = nil    // remove indicator
+            hud1.textLabel.text = "Welcome!"
+            hud1.dismiss(afterDelay: 2.0, animated: true)
             // segue to tab bar VC
             self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)
         }) {errorString in
             // this will be the one which prints error due to auth, in console
             print(errorString!)
+            hud1.indicatorView = nil    // remove indicator
+            hud1.textLabel.text = errorString!
+            hud1.dismiss(afterDelay: 2.0, animated: true)
         }
         
     }
@@ -174,4 +190,4 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #178
+}   // #194

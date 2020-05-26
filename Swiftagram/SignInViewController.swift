@@ -53,7 +53,7 @@ class SignInViewController: UIViewController {
         
         // progress hud
         let hud1 = JGProgressHUD(style: .dark)
-        hud1.textLabel.text = "Please Wait..."
+        // hud1.textLabel.text = "Please Wait..."
         hud1.show(in: self.view)
         
         // validations
