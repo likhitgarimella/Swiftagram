@@ -50,7 +50,9 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         shareOutlet.layer.cornerRadius = 6
         
         captionTextView.backgroundColor = UIColor.white
-        captionTextView.delegate = self     // text view delegate
+        // text view delegate
+        captionTextView.delegate = self
+        // acts as default text view placeholder
         captionTextView.text = "Write a caption..."
         captionTextView.textColor = UIColor.lightGray
         
@@ -66,8 +68,11 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         let pickerController = UIImagePickerController()
         // To get access to selected media files, add delegate
         pickerController.delegate = self
-        // present photo library
+        /// presenting it in full screen bcuz...
+        /// i want the view to change...
+        /// so that viewWillAppear will work...
         pickerController.modalPresentationStyle = .fullScreen
+        // present photo library
         present(pickerController, animated: true, completion: nil)
         
     }
@@ -82,10 +87,12 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     func handlePost() {
         
         if selectedImage != nil {
+            // Enable
             self.shareOutlet.isEnabled = true
             shareOutlet.setTitleColor(UIColor.white, for: .normal)
             shareOutlet.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
         } else {
+            // Disable
             self.shareOutlet.isEnabled = false
             shareOutlet.setTitleColor(UIColor.lightText, for: .normal)
             shareOutlet.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
@@ -97,7 +104,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         
         hud1.show(in: self.view)
         
-        // selected image should be from image
+        // selected image(imageSelected) should be from selectedImage
         guard let imageSelected = self.selectedImage else {
             print("Avatar is nil")
             hud1.indicatorView = nil    // remove indicator
@@ -109,6 +116,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
             return
         }
+        // NSUUID
         let photoIdString = NSUUID().uuidString
         print("Photo Id String: \(photoIdString)")
         let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com").child("posts").child(photoIdString)
@@ -139,6 +147,9 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     func sendDataToDatabase(photoUrl: String) {
         
         let databaseRef = Database.database().reference().child("posts")
+        /// creating an auto id for every new post...
+        /// so we use childByAutoId instead of uid...
+        /// since 1 unique user may have many posts...
         let newPostId = databaseRef.childByAutoId().key
         let newPostReference = databaseRef.child(newPostId!)
         // put that download url string in db
@@ -156,9 +167,12 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             self.hud1.indicatorView = nil    // remove indicator
             self.hud1.textLabel.text = "Success!"
             self.photo.image = UIImage(named: "Placeholder-image")
+            // selected image should be blank again, after we push the post to db
             self.selectedImage = nil
+            // setting back text view text color to light gray, so that delegate methods work
             self.captionTextView.textColor = UIColor.lightGray
             self.hud1.dismiss(afterDelay: 2.0, animated: true)
+            // after post share is success, switch to home tab
             self.tabBarController?.selectedIndex = 0
         })
         
@@ -180,4 +194,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #184
+}   // #198
