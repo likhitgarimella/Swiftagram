@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil {
-                print(error!)
+                print(error!.localizedDescription)
                 return
             }
             // unique user id
@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController {
             // put image data
             storageProfileRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
                 if error != nil {
-                    print(error!)
+                    print(error!.localizedDescription)
                     return
                 }
                 // get download url for image from Firebase Storage
@@ -136,6 +136,8 @@ class SignUpViewController: UIViewController {
         LeftPadding()
         handleTextField()
         ProfileImage()
+        
+        signUpOutLet.isEnabled = false
         
     }
     
@@ -206,4 +208,4 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #210
+}   // #212

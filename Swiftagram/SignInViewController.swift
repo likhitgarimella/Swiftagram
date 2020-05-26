@@ -52,14 +52,12 @@ class SignInViewController: UIViewController {
             print("Invalid Form Input")
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
+        
+        AuthService.signIn(email: email, password: password, onSuccess: {
+            print("On Success")
             // segue to tab bar VC
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
-        }
+        })
         
     }
     
@@ -78,6 +76,8 @@ class SignInViewController: UIViewController {
         CornerRadius()
         LeftPadding()
         handleTextField()
+        
+        signInOutLet.isEnabled = false
         
     }
     
