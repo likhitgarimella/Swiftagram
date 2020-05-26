@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import JGProgressHUD
 
 class CameraViewController: UIViewController {
     
@@ -15,6 +17,9 @@ class CameraViewController: UIViewController {
     @IBOutlet var shareOutlet: UIButton!
     
     var selectedImage: UIImage?
+    
+    // progress hud
+    let hud1 = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +51,68 @@ class CameraViewController: UIViewController {
     
     @IBAction func shareButton(_ sender: UIButton) {
         
+        hud1.show(in: self.view)
         
+        // selected image should be from image
+        guard let imageSelected = self.selectedImage else {
+            print("Avatar is nil")
+            hud1.indicatorView = nil    // remove indicator
+            hud1.textLabel.text = "Profile image can't be empty"
+            hud1.dismiss(afterDelay: 2.0, animated: true)
+            return
+        }
+        // image data from selected image in jpeg format
+        guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
+            return
+        }
+        let photoIdString = NSUUID().uuidString
+        print("Photo Id String: \(photoIdString)")
+        let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com").child("posts").child(photoIdString)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        // put image data
+        storageRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                // progress hud
+                self.hud1.show(in: self.view)
+                self.hud1.indicatorView = nil    // remove indicator
+                self.hud1.textLabel.text = error!.localizedDescription
+                self.hud1.dismiss(afterDelay: 2.0, animated: true)
+                return
+            }
+            // get download url for image from Firebase Storage
+            storageRef.downloadURL { (url, error) in
+                // convert that download url to string
+                if let metaImageUrl = url?.absoluteString {
+                    print(metaImageUrl)
+                    self.sendDataToDatabase(photoUrl: metaImageUrl)
+                }
+            }
+        }
+    }
+    
+    func sendDataToDatabase(photoUrl: String) {
+        
+        let databaseRef = Database.database().reference().child("posts")
+        let newPostId = databaseRef.childByAutoId().key
+        let newPostReference = databaseRef.child(newPostId!)
+        // put that download url string in db
+        newPostReference.setValue(["photoUrl": photoUrl], withCompletionBlock: { (error, ref) in
+            if error != nil {
+                print(error!.localizedDescription)
+                // progress hud
+                self.hud1.show(in: self.view)
+                self.hud1.indicatorView = nil    // remove indicator
+                self.hud1.textLabel.text = error!.localizedDescription
+                self.hud1.dismiss(afterDelay: 2.0, animated: true)
+                return
+            }
+            self.hud1.show(in: self.view)
+            self.hud1.indicatorView = nil    // remove indicator
+            self.hud1.textLabel.text = "Success!"
+            self.hud1.dismiss(afterDelay: 2.0, animated: true)
+        })
         
     }
     
@@ -66,4 +132,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #70
+}   // #136
