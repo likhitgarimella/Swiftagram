@@ -16,6 +16,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var captionTextView: UITextView!
     @IBOutlet var shareOutlet: UIButton!
     
+    @IBOutlet var removeOutlet: UIBarButtonItem!
+    
     var selectedImage: UIImage?
     
     // Delegate function
@@ -88,11 +90,13 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         
         if selectedImage != nil {
             // Enable
+            self.removeOutlet.isEnabled = true
             self.shareOutlet.isEnabled = true
             shareOutlet.setTitleColor(UIColor.white, for: .normal)
             shareOutlet.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
         } else {
             // Disable
+            self.removeOutlet.isEnabled = false
             self.shareOutlet.isEnabled = false
             shareOutlet.setTitleColor(UIColor.lightText, for: .normal)
             shareOutlet.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
@@ -144,6 +148,17 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @IBAction func remove(_ sender: UIBarButtonItem) {
+        
+        self.photo.image = UIImage(named: "Placeholder-image")
+        self.selectedImage = nil
+        self.captionTextView.text = "Write a caption..."
+        self.captionTextView.textColor = UIColor.lightGray
+        // we need to test for bad inputs again, after clearing the inputs
+        handlePost()
+        
+    }
+    
     func sendDataToDatabase(photoUrl: String) {
         
         let databaseRef = Database.database().reference().child("posts")
@@ -169,6 +184,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             self.photo.image = UIImage(named: "Placeholder-image")
             // selected image should be blank again, after we push the post to db
             self.selectedImage = nil
+            self.captionTextView.text = "Write a caption..."
             // setting back text view text color to light gray, so that delegate methods work
             self.captionTextView.textColor = UIColor.lightGray
             self.hud1.dismiss(afterDelay: 2.0, animated: true)
@@ -194,4 +210,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #198
+}   // #214

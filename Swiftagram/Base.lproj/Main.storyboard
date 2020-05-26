@@ -378,10 +378,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uWL-R0-MCO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="WX2-Wa-J8U"/>
+                    <navigationItem key="navigationItem" title="Camera" id="WX2-Wa-J8U">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="SUx-84-ASo">
+                            <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="remove:" destination="DIa-FR-LPj" id="PYm-Pd-ST9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="Ghy-4R-RAT" id="2wO-Wt-b02"/>
                         <outlet property="photo" destination="GE7-Pf-hqc" id="VpU-t1-o47"/>
+                        <outlet property="removeOutlet" destination="SUx-84-ASo" id="AOn-ZS-ofs"/>
                         <outlet property="shareOutlet" destination="QNq-bc-NwT" id="mEI-e6-zOn"/>
                     </connections>
                 </viewController>

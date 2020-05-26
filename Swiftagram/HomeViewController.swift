@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
         
         // nav bar button
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.systemTeal
         
     }
     
@@ -27,7 +28,6 @@ class HomeViewController: UIViewController {
         } catch let logoutError {
             print(logoutError)
         }
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         self.present(signInVC, animated: true, completion: nil)
