@@ -11,12 +11,12 @@ import Firebase
 
 class AuthService {
     
-    static func signIn(email: String, password: String, onSuccess: @escaping () -> Void) {
+    static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
         
         print("Sign in")
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error!.localizedDescription)
+                onError(error!.localizedDescription)
                 return
             }
             onSuccess()

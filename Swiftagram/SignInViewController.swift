@@ -57,6 +57,8 @@ class SignInViewController: UIViewController {
             print("On Success")
             // segue to tab bar VC
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
+        }, onError: {errorString in
+            print(errorString!) // this will be the one which prints error due to auth, in console
         })
         
     }
@@ -112,4 +114,4 @@ class SignInViewController: UIViewController {
         
     }
 
-}   // #116
+}   // #118
