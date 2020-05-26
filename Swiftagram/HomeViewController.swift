@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +30,26 @@ class HomeViewController: UIViewController {
         } catch let logoutError {
             print(logoutError)
         }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         self.present(signInVC, animated: true, completion: nil)
         
     }
 
-}   // #38
+}
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        cell.backgroundColor = UIColor.gray
+        return cell
+    }
+    
+}   // #56

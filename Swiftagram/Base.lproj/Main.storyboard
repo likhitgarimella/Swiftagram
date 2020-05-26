@@ -274,14 +274,43 @@
                     <view key="view" contentMode="scaleToFill" id="sVt-v5-Flj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NLN-YV-o3d">
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" id="CgO-ef-MAo">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CgO-ef-MAo" id="NuQ-ha-dyq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oIl-5g-ZZJ" id="ios-zh-IBf"/>
+                                    <outlet property="delegate" destination="oIl-5g-ZZJ" id="HqD-kr-VWM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NLN-YV-o3d" firstAttribute="leading" secondItem="Bxy-Cq-ijR" secondAttribute="leading" id="4Zk-Ri-eCL"/>
+                            <constraint firstItem="NLN-YV-o3d" firstAttribute="trailing" secondItem="Bxy-Cq-ijR" secondAttribute="trailing" id="78w-2e-EOo"/>
+                            <constraint firstItem="NLN-YV-o3d" firstAttribute="bottom" secondItem="Bxy-Cq-ijR" secondAttribute="bottom" id="L3u-yx-rsu"/>
+                            <constraint firstItem="NLN-YV-o3d" firstAttribute="top" secondItem="Bxy-Cq-ijR" secondAttribute="top" id="e4y-JQ-E99"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxy-Cq-ijR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="i6t-Co-5Ip"/>
+                    <connections>
+                        <outlet property="tableView" destination="NLN-YV-o3d" id="bsG-qL-cLB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiu-cL-64v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="-669"/>
+            <point key="canvasLocation" x="2089.8550724637685" y="-669.29347826086962"/>
         </scene>
         <!--Discover-->
         <scene sceneID="U9g-oo-KxT">
