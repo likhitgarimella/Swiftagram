@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpBtn(_ sender: UIButton) {
         
         // validations
-        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = nameTextField.text else {
             print("Invalid Form Input")
             return
         }
@@ -74,50 +74,13 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        // Firebase Auth
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil {
-                print(error!.localizedDescription)
-                return
-            }
-            // unique user id
-            guard let uid = user?.user.uid else {
-                return
-            }
-            
-            // Firebase Storage
-            // reference url
-            let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com")
-            let storageProfileRef = storageRef.child("profile_image").child(uid)
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpg"
-            // put image data
-            storageProfileRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
-                if error != nil {
-                    print(error!.localizedDescription)
-                    return
-                }
-                // get download url for image from Firebase Storage
-                storageProfileRef.downloadURL { (url, error) in
-                    // convert that download url to string
-                    if let metaImageUrl = url?.absoluteString {
-                        print(metaImageUrl)
-                        // put that download url string in db
-                        let values = ["name": name, "email": email, "profileImgUrl": metaImageUrl]
-                        let databaseRef = Database.database().reference().child("users").child(uid)
-                        databaseRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
-                            if error == nil {
-                                print("Done")
-                            }
-                            // segue to tab bar VC
-                            self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)
-                        })
-                    }
-                }
-            }
-            
-        })
+        AuthService.signUp(username: username, email: email, password: password, imageData: imageData, onSuccess: {
+            print("On Success")
+            // segue to tab bar VC
+            self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)
+        }) {errorString in
+            print(errorString!)
+        }
         
     }
     
@@ -190,7 +153,6 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("Image selected from library")
         // Selected image to display it in our profile image
         if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             // set profile image's imageView to selected image
@@ -205,7 +167,9 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
             // Store this img in an instance variable
             image = imageOriginal
         }
+        
+        print("Image selected from library")
         dismiss(animated: true, completion: nil)
     }
     
-}   // #212
+}   // #176
