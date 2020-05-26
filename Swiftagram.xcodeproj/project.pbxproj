@@ -163,6 +163,7 @@
 				TargetAttributes = {
 					02F94D85247A649000887DAD = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -401,6 +402,7 @@
 			baseConfigurationReference = 19125ED6727BCC551F2EE657 /* Pods-Swiftagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77BWS8985H;
 				INFOPLIST_FILE = Swiftagram/Info.plist;
@@ -411,6 +413,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.likhitgarimella.Swiftagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -421,6 +424,7 @@
 			baseConfigurationReference = B35ABEC76131FCEE68BC62CC /* Pods-Swiftagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77BWS8985H;
 				INFOPLIST_FILE = Swiftagram/Info.plist;

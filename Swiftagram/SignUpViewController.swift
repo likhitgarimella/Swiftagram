@@ -59,6 +59,8 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpBtn(_ sender: UIButton) {
         
+        view.endEditing(true)
+        
         // validations
         guard let email = emailTextField.text, let password = passwordTextField.text, let username = nameTextField.text else {
             print("Invalid Form Input")
@@ -79,6 +81,7 @@ class SignUpViewController: UIViewController {
             // segue to tab bar VC
             self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)
         }) {errorString in
+            // this will be the one which prints error due to auth, in console
             print(errorString!)
         }
         
@@ -167,9 +170,8 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
             // Store this img in an instance variable
             image = imageOriginal
         }
-        
         print("Image selected from library")
         dismiss(animated: true, completion: nil)
     }
     
-}   // #176
+}   // #178
