@@ -20,6 +20,16 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.systemTeal
         
+        loadPosts()
+        
+    }
+    
+    func loadPosts() {
+        
+        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
+            print(snapshot.value)
+        }
+        
     }
     
     @objc func handleLogout() {
@@ -52,4 +62,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #56
+}   // #66
