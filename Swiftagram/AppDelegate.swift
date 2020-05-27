@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().barTintColor = .white
         UITabBar.appearance().tintColor = .black
+        
+        // Increase Launch Screen Time
+        Thread.sleep(forTimeInterval: 2)
+        
         return true
     }
 
@@ -44,4 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-}   // #48
+}   // #52
