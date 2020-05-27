@@ -22,12 +22,16 @@ class HomeViewController: UIViewController {
         
         loadPosts()
         
+        var post = Post(captionText: "test", photoUrlString: "url1")
+        print(post.caption)
+        print(post.photoUrl)
+        
     }
     
     func loadPosts() {
         
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
-            print(snapshot.value)
+            // print(snapshot.value)
         }
         
     }
@@ -62,4 +66,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #66
+}   // #70
