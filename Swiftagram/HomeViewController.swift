@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    // reference to store Post class info
     var posts = [Post]()
     
     override func viewDidLoad() {
@@ -34,6 +35,9 @@ class HomeViewController: UIViewController {
         
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             // print(snapshot.value)
+            /// To check the status...
+            print(Thread.isMainThread)
+            // dict - snapshot
             if let dict = snapshot.value as? [String: Any] {
                 // print(dict)
                 /// Unexpectedly found nil while unwrapping an Optional value...
@@ -70,14 +74,14 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = posts[indexPath.row].caption
         cell.backgroundColor = UIColor.gray
         return cell
     }
     
-}   // #84
+}   // #88
