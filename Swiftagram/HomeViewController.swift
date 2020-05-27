@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
             print(Thread.isMainThread)
             // dict - snapshot
             if let dict = snapshot.value as? [String: Any] {
-                let post = Post()
+                let newPost = Post.transformPostPhoto(dict: dict)
                 // print(dict)
                 /// Unexpectedly found nil while unwrapping an Optional value...
                 /// To resolve this issue...
@@ -50,9 +50,7 @@ class HomeViewController: UIViewController {
                     print(self.posts)
                     self.tableView.reloadData()
                 } */
-                post.caption = dict["caption"] as? String
-                post.photoUrl = dict["photoUrl"] as? String
-                self.posts.append(post)
+                self.posts.append(newPost)
                 print(self.posts)
                 self.tableView.reloadData()
             }
@@ -90,4 +88,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #94
+}   // #92

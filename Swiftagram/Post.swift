@@ -26,4 +26,25 @@ class Post {
     }
     */
     
-}   // #30
+}
+
+extension Post {
+    
+    // Photo
+    static func transformPostPhoto(dict: [String: Any]) -> Post {
+        
+        let post = Post()
+        post.caption = dict["caption"] as? String
+        post.photoUrl = dict["photoUrl"] as? String
+        return post
+        
+    }
+    
+    // Video
+    static func transformPostVideo() -> Post {
+        
+        
+        
+    }
+    
+}   // #51
