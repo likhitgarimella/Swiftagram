@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +24,9 @@ class HomeViewController: UIViewController {
         
         loadPosts()
         
-        var post = Post(captionText: "test", photoUrlString: "url1")
-        print(post.caption)
-        print(post.photoUrl)
+        // var post = Post(captionText: "test", photoUrlString: "url1")
+        // print(post.caption)
+        // print(post.photoUrl)
         
     }
     
@@ -32,6 +34,18 @@ class HomeViewController: UIViewController {
         
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             // print(snapshot.value)
+            if let dict = snapshot.value as? [String: Any] {
+                // print(dict)
+                /// Unexpectedly found nil while unwrapping an Optional value...
+                /// To resolve this issue...
+                /// Add 'if let' instead of just 'let'...
+                if let captionText = dict["caption"] as? String, let photoUrlString = dict["photoUrl"] as? String {
+                    let post = Post(captionText: captionText, photoUrlString: photoUrlString)
+                    self.posts.append(post)
+                    print(self.posts)
+                    self.tableView.reloadData()
+                }
+            }
         }
         
     }
@@ -66,4 +80,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #70
+}   // #84
