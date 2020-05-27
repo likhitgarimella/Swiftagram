@@ -10,14 +10,20 @@ import Foundation
 
 class Post {
     
-    var caption: String
-    var photoUrl: String
+    var caption: String?
+    var photoUrl: String?
+    var videoUrl: String?
     
+    /*
     init(captionText: String, photoUrlString: String) {
-        
         caption = captionText
         photoUrl = photoUrlString
-        
     }
     
-}   // #24
+    init(captionText: String, videoUrlString: String) {
+        caption = captionText
+        videoUrl = videoUrlString
+    }
+    */
+    
+}   // #30
