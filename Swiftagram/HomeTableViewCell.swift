@@ -50,7 +50,8 @@ class HomeTableViewCell: UITableViewCell {
                     self.nameLabel.text = user.usernameString
                     if let photoUrlString = user.profileImageUrlString {
                         let photoUrl = URL(string: photoUrlString)
-                        self.profileImageView.sd_setImage(with: photoUrl)
+                        // display placeholder image before image gets loaded
+                        self.profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
                     }
                 }
             })
@@ -58,10 +59,13 @@ class HomeTableViewCell: UITableViewCell {
         
     }
     
+    /// This is only called when a cell is loaded in a memory...
+    /// It's not called when a cell is reused later...
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        nameLabel.text = ""
+        captionLabel.text = ""
         
     }
 
@@ -72,4 +76,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #76
+}   // #80
