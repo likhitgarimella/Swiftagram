@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeTableViewCell: UITableViewCell {
     
@@ -34,6 +35,22 @@ class HomeTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: photoUrl)
         }
         
+       setupUserInfo()
+        
+    }
+    
+    /// it's job is to use uid to download user info...
+    /// and assign that to the profile image view & name label properties...
+    func setupUserInfo() {
+        
+        if let uid = post?.uid {
+            Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = User.transformUser(dict: dict)
+                }
+            })
+        }
+        
     }
     
     override func awakeFromNib() {
@@ -50,4 +67,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #54
+}   // #71

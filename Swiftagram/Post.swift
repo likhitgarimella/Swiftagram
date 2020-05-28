@@ -12,7 +12,8 @@ class Post {
     
     var caption: String?
     var photoUrl: String?
-    var videoUrl: String?
+    // var videoUrl: String?
+    var uid: String?
     
     /*
     init(captionText: String, photoUrlString: String) {
@@ -36,6 +37,7 @@ extension Post {
         let post = Post()
         post.caption = dict["caption"] as? String
         post.photoUrl = dict["photoUrl"] as? String
+        post.uid = dict["uid"] as? String
         return post
         
     }
@@ -47,4 +49,4 @@ extension Post {
         
     } */
     
-}   // #51
+}   // #53
