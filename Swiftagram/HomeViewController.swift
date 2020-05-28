@@ -96,7 +96,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! HomeTableViewCell
         cell.backgroundColor = UIColor.white
         let post = posts[indexPath.row]
-        cell.updateView(post: post)
+        cell.post = post
         return cell
     }
     

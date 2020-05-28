@@ -20,10 +20,16 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet var likeCountButton: UIButton!
     @IBOutlet var captionLabel: UILabel!
     
-    func updateView(post: Post) {
+    var post: Post? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
         
-        captionLabel.text = post.caption
-        if let photoUrlString = post.photoUrl {
+        captionLabel.text = post?.caption
+        if let photoUrlString = post?.photoUrl {
             let photoUrl = URL(string: photoUrlString)
             postImageView.sd_setImage(with: photoUrl)
         }
@@ -44,4 +50,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #48
+}   // #54
