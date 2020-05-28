@@ -167,8 +167,12 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         /// since 1 unique user may have many posts...
         let newPostId = databaseRef.childByAutoId().key
         let newPostReference = databaseRef.child(newPostId!)
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let currentUserId = currentUser.uid
         // put that download url string in db
-        newPostReference.setValue(["photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: { (error, ref) in
+        newPostReference.setValue(["uid": currentUserId, "photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: { (error, ref) in
             if error != nil {
                 print(error!.localizedDescription)
                 // progress hud
@@ -210,4 +214,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #214
+}   // #218
