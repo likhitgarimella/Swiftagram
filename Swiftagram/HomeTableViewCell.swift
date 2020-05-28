@@ -44,9 +44,14 @@ class HomeTableViewCell: UITableViewCell {
     func setupUserInfo() {
         
         if let uid = post?.uid {
-            Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let dict = snapshot.value as? [String: Any] {
                     let user = User.transformUser(dict: dict)
+                    self.nameLabel.text = user.usernameString
+                    if let photoUrlString = user.profileImageUrlString {
+                        let photoUrl = URL(string: photoUrlString)
+                        self.profileImageView.sd_setImage(with: photoUrl)
+                    }
                 }
             })
         }
@@ -67,4 +72,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #71
+}   // #76

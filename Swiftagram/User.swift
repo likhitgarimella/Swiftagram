@@ -10,6 +10,22 @@ import Foundation
 
 class User {
     
+    var emailString: String?
+    var profileImageUrlString: String?
+    var usernameString: String?
     
+}
+
+extension User {
     
-}   // #16
+    static func transformUser(dict: [String: Any]) -> User {
+        
+        let user = User()
+        user.emailString = dict["email"] as? String
+        user.profileImageUrlString = dict["profileImgUrl"] as? String
+        user.usernameString = dict["name"] as? String
+        return user
+        
+    }
+    
+}   // #32
