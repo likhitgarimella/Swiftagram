@@ -20,6 +20,16 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet var likeCountButton: UIButton!
     @IBOutlet var captionLabel: UILabel!
     
+    func updateView(post: Post) {
+        
+        captionLabel.text = post.caption
+        if let photoUrlString = post.photoUrl {
+            let photoUrl = URL(string: photoUrlString)
+            postImageView.sd_setImage(with: photoUrl)
+        }
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,4 +44,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #38
+}   // #48
