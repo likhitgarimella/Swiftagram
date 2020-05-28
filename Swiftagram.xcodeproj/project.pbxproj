@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02A07369247F7B2F008C5D46 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */; };
 		02B5133E247B3BB000FD2087 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */; };
 		02B51340247C911600FD2087 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5133F247C911600FD2087 /* AuthService.swift */; };
 		02DCEEF6247E490500AF1876 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DCEEF5247E490500AF1876 /* Post.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02B5133F247C911600FD2087 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		02DCEEF5247E490500AF1876 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */,
 				02DCEEF5247E490500AF1876 /* Post.swift */,
 				02F94DA4247AAF5300887DAD /* HomeViewController.swift */,
+				02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */,
 				02F94DA6247AAF6300887DAD /* DiscoverViewController.swift */,
 				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
 				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
@@ -252,6 +255,7 @@
 			files = (
 				02F94D8E247A649000887DAD /* SignInViewController.swift in Sources */,
 				02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */,
+				02A07369247F7B2F008C5D46 /* HomeTableViewCell.swift in Sources */,
 				02F94DAD247AAF8400887DAD /* ProfileViewController.swift in Sources */,
 				02DCEEF6247E490500AF1876 /* Post.swift in Sources */,
 				02F94DA7247AAF6300887DAD /* DiscoverViewController.swift in Sources */,
