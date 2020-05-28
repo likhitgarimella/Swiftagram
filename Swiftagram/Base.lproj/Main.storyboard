@@ -374,6 +374,16 @@
                                                 <constraint firstItem="Ys9-PK-fBC" firstAttribute="leading" secondItem="NuQ-ha-dyq" secondAttribute="leading" constant="12" id="vdu-gV-QgW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="Cw2-Ca-4tM" id="DGh-1j-jqb"/>
+                                            <outlet property="commentImageView" destination="hdm-W0-1AI" id="gDk-8I-MzC"/>
+                                            <outlet property="likeCountButton" destination="fnt-14-9XP" id="3UB-g6-cpc"/>
+                                            <outlet property="likeImageView" destination="AC7-lv-4yR" id="J35-wC-HrQ"/>
+                                            <outlet property="nameLabel" destination="11z-GJ-Bvs" id="iI7-Jl-ZDP"/>
+                                            <outlet property="postImageView" destination="91s-3i-cWf" id="b7q-g1-jtj"/>
+                                            <outlet property="profileImageView" destination="Ys9-PK-fBC" id="3ae-Rt-Vau"/>
+                                            <outlet property="shareImageView" destination="wg0-76-GEH" id="IA6-kC-hee"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
