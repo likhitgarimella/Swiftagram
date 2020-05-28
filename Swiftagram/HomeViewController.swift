@@ -23,11 +23,21 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.systemTeal
         
+        Properties()
+        
         loadPosts()
         
         // var post = Post(captionText: "test", photoUrlString: "url1")
         // print(post.caption)
         // print(post.photoUrl)
+        
+    }
+    
+    func Properties() {
+        
+        tableView.backgroundColor = UIColor.white
+        tableView.estimatedRowHeight = 515
+        tableView.rowHeight = UITableView.automaticDimension
         
     }
     
@@ -78,14 +88,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! HomeTableViewCell
-        // cell.textLabel?.text = posts[indexPath.row].caption
-        cell.backgroundColor = UIColor.gray
+        cell.nameLabel.text = "likhitgarimella"
+        cell.postImageView.image = UIImage(named: "Car image")
+        cell.captionLabel.text = "asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf"
+        cell.backgroundColor = UIColor.white
         return cell
     }
     
-}   // #92
+}   // #104

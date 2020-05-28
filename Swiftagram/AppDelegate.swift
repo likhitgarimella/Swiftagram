@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = .black
         
         // Increase Launch Screen Time
-        Thread.sleep(forTimeInterval: 2)
+        // Thread.sleep(forTimeInterval: 2)
         
         return true
     }

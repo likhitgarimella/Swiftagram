@@ -34,4 +34,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #28
+}   // #38
