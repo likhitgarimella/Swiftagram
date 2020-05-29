@@ -17,6 +17,9 @@ class HomeViewController: UIViewController {
     // reference to store Post class info
     var posts = [Post]()
     
+    // reference to store User class info
+    var users = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +48,13 @@ class HomeViewController: UIViewController {
     func loadPosts() {
         
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
+            
             // print(snapshot.value)
             /// To check the status...
             print(Thread.isMainThread)
             // dict - snapshot
             if let dict = snapshot.value as? [String: Any] {
+                
                 let newPost = Post.transformPostPhoto(dict: dict)
                 // print(dict)
                 /// Unexpectedly found nil while unwrapping an Optional value...
@@ -61,11 +66,30 @@ class HomeViewController: UIViewController {
                     print(self.posts)
                     self.tableView.reloadData()
                 } */
-                self.posts.append(newPost)
-                print(self.posts)
-                self.tableView.reloadData()
+                // self.fetchUser(uid: newPost.uid!)
+                self.fetchUser(uid: newPost.uid!, completed: {
+                    self.posts.append(newPost)
+                    print(self.posts)
+                    self.tableView.reloadData()
+                })
+                
             }
+            
         }
+        
+    }
+    
+    /// it's job is to...
+    /// given a user id, look up the corresponding user on db...
+    func fetchUser(uid: String, completed: @escaping () -> Void) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let user = User.transformUser(dict: dict)
+                self.users.append(user)
+                completed()
+            }
+        })
         
     }
     
@@ -96,8 +120,10 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! HomeTableViewCell
         cell.backgroundColor = UIColor.white
         let post = posts[indexPath.row]
+        let user = users[indexPath.row]
         cell.post = post
+        cell.user = user
         return cell
     }
     
-}   // #104
+}   // #130

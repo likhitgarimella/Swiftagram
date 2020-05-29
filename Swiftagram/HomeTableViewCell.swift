@@ -27,6 +27,14 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    /// when this user property is set..
+    /// we'll let the cell download the correspoding cell..
+    var user: User? {
+        didSet {
+            setupUserInfo()
+        }
+    }
+    
     func updateView() {
         
         captionLabel.text = post?.caption
@@ -35,12 +43,28 @@ class HomeTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: photoUrl)
         }
         
-       setupUserInfo()
+        setupUserInfo()
         
     }
     
+    /// New setupUserInfo() func
+    /// previously, our cell had to go look up the db for a user based on the uid...
+    /// it now knows all that information already...
+    func setupUserInfo() {
+        
+        nameLabel.text = user?.usernameString
+        if let photoUrlString = user?.profileImageUrlString {
+            let photoUrl = URL(string: photoUrlString)
+            profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
+        }
+        
+    }
+    
+    /// Delete old setupUserInfo() func
+    /*
     /// it's job is to use uid to download user info...
     /// and assign that to the profile image view & name label properties...
+    /// Old setupUserInfo() func
     func setupUserInfo() {
         
         if let uid = post?.uid {
@@ -58,6 +82,7 @@ class HomeTableViewCell: UITableViewCell {
         }
         
     }
+    */
     
     /// This is only called when a cell is loaded in a memory...
     /// It's not called when a cell is reused later...
@@ -68,6 +93,15 @@ class HomeTableViewCell: UITableViewCell {
         captionLabel.text = ""
         
     }
+    
+    /// We can erase all old data before a cell is reused...
+    /// this method will be called right before a cell is reused...
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        profileImageView.image = UIImage(named: "Placeholder-image")
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -76,4 +110,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #80
+}   // #114
