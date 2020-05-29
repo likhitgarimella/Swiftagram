@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    
     // reference to store Post class info
     var posts = [Post]()
     
@@ -47,6 +49,9 @@ class HomeViewController: UIViewController {
     
     func loadPosts() {
         
+        // start when loadPosts func starts
+        activityIndicatorView.startAnimating()
+        
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             
             // print(snapshot.value)
@@ -70,6 +75,9 @@ class HomeViewController: UIViewController {
                 self.fetchUser(uid: newPost.uid!, completed: {
                     self.posts.append(newPost)
                     print(self.posts)
+                    // stop before tablew view reloads data
+                    self.activityIndicatorView.stopAnimating()
+                    self.activityIndicatorView.hidesWhenStopped = true
                     self.tableView.reloadData()
                 })
                 
@@ -126,4 +134,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #130
+}   // #138

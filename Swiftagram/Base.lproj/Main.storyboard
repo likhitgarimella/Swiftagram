@@ -397,18 +397,25 @@
                                     <outlet property="delegate" destination="oIl-5g-ZZJ" id="HqD-kr-VWM"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="GJt-21-tvd">
+                                <rect key="frame" x="188.66666666666666" y="347" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="GJt-21-tvd" firstAttribute="centerY" secondItem="Bxy-Cq-ijR" secondAttribute="centerY" id="18H-we-AEa"/>
                             <constraint firstItem="NLN-YV-o3d" firstAttribute="leading" secondItem="Bxy-Cq-ijR" secondAttribute="leading" id="hox-d4-Tga"/>
                             <constraint firstItem="NLN-YV-o3d" firstAttribute="bottom" secondItem="Bxy-Cq-ijR" secondAttribute="bottom" id="pge-li-e87"/>
                             <constraint firstItem="NLN-YV-o3d" firstAttribute="trailing" secondItem="Bxy-Cq-ijR" secondAttribute="trailing" id="rlR-go-b2t"/>
                             <constraint firstItem="NLN-YV-o3d" firstAttribute="top" secondItem="Bxy-Cq-ijR" secondAttribute="top" id="uQQ-cg-Zfu"/>
+                            <constraint firstItem="GJt-21-tvd" firstAttribute="centerX" secondItem="Bxy-Cq-ijR" secondAttribute="centerX" id="wbk-3P-UlN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxy-Cq-ijR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="i6t-Co-5Ip"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="GJt-21-tvd" id="KlC-hd-iKh"/>
                         <outlet property="tableView" destination="NLN-YV-o3d" id="bsG-qL-cLB"/>
                     </connections>
                 </viewController>
