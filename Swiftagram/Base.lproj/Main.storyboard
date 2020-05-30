@@ -441,7 +441,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-NF-zom">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="686"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -488,6 +488,7 @@
                                                 <constraint firstItem="Xe7-UU-pKy" firstAttribute="top" secondItem="c0P-cQ-q4g" secondAttribute="bottom" constant="8" id="rzN-lc-Bba"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="commentLabel" destination="Xe7-UU-pKy" id="q8C-Nx-Jd6"/>
                                             <outlet property="nameLabel" destination="c0P-cQ-q4g" id="7FC-6A-MMR"/>
@@ -496,17 +497,58 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-tL-cxe">
+                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUI-lc-NW8">
+                                        <rect key="frame" x="8" y="8" width="338" height="34"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k00-cP-M3s">
+                                        <rect key="frame" x="366" y="9.6666666666666288" width="40" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="YhV-5b-cWW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Send"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="k00-cP-M3s" secondAttribute="trailing" constant="8" id="7vE-e7-pS9"/>
+                                    <constraint firstItem="oUI-lc-NW8" firstAttribute="top" secondItem="Mie-tL-cxe" secondAttribute="top" constant="8" id="Cdp-wh-Pu7"/>
+                                    <constraint firstAttribute="height" constant="50" id="F5o-r5-z2a"/>
+                                    <constraint firstAttribute="bottom" secondItem="oUI-lc-NW8" secondAttribute="bottom" constant="8" id="Ixb-VN-fcC"/>
+                                    <constraint firstItem="k00-cP-M3s" firstAttribute="leading" secondItem="oUI-lc-NW8" secondAttribute="trailing" constant="20" id="JDw-bd-RWv"/>
+                                    <constraint firstItem="k00-cP-M3s" firstAttribute="centerY" secondItem="Mie-tL-cxe" secondAttribute="centerY" id="THQ-IU-4oJ"/>
+                                    <constraint firstItem="oUI-lc-NW8" firstAttribute="leading" secondItem="Mie-tL-cxe" secondAttribute="leading" constant="8" id="VJD-Ld-gsp"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bOk-NF-zom" firstAttribute="top" secondItem="Ojw-7R-TcX" secondAttribute="top" id="6bs-et-wHp"/>
+                            <constraint firstItem="Mie-tL-cxe" firstAttribute="trailing" secondItem="KVp-tt-eZm" secondAttribute="trailing" id="VBG-9X-Qiz"/>
                             <constraint firstItem="bOk-NF-zom" firstAttribute="leading" secondItem="KVp-tt-eZm" secondAttribute="leading" id="WsQ-3P-tLp"/>
-                            <constraint firstAttribute="bottom" secondItem="bOk-NF-zom" secondAttribute="bottom" id="hn1-3P-S9S"/>
+                            <constraint firstItem="Mie-tL-cxe" firstAttribute="leading" secondItem="KVp-tt-eZm" secondAttribute="leading" id="Wsf-VC-IlR"/>
+                            <constraint firstItem="Mie-tL-cxe" firstAttribute="bottom" secondItem="KVp-tt-eZm" secondAttribute="bottom" id="kqK-ij-yeq"/>
                             <constraint firstItem="bOk-NF-zom" firstAttribute="trailing" secondItem="KVp-tt-eZm" secondAttribute="trailing" id="wS0-2o-CIL"/>
+                            <constraint firstItem="Mie-tL-cxe" firstAttribute="top" secondItem="bOk-NF-zom" secondAttribute="bottom" id="wiY-gB-ec7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KVp-tt-eZm"/>
                     </view>
                     <navigationItem key="navigationItem" id="1D0-r7-NFW"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="facultyListTableView" destination="bOk-NF-zom" id="Bki-fa-jV3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bF3-ki-vq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

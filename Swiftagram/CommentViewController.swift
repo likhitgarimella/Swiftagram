@@ -9,12 +9,25 @@
 import UIKit
 
 class CommentViewController: UIViewController {
+    
+    @IBOutlet var facultyListTableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func Properties() {
+        
+        facultyListTableView.backgroundColor = UIColor.white
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        Properties()
         
     }
 
-}   // #21
+}   // #34

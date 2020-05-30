@@ -87,6 +87,12 @@ class HomeViewController: UIViewController {
         
     }
     
+    // to enable back, the tab bar VC
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     /// it's job is to...
     /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
@@ -140,4 +146,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #144
+}   // #150
