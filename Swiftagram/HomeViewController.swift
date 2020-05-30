@@ -115,7 +115,13 @@ class HomeViewController: UIViewController {
         self.present(signInVC, animated: true, completion: nil)
         
     }
-
+    
+    @IBAction func button_touch(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "commentSegue", sender: nil)
+        
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -134,4 +140,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #138
+}   // #144

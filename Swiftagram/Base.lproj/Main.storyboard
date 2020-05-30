@@ -401,6 +401,14 @@
                                 <rect key="frame" x="188.66666666666666" y="347" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfb-j4-NAi">
+                                <rect key="frame" x="184" y="353" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="button_touch:" destination="oIl-5g-ZZJ" eventType="touchUpInside" id="1PE-IF-cyy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -417,7 +425,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="GJt-21-tvd" id="KlC-hd-iKh"/>
                         <outlet property="tableView" destination="NLN-YV-o3d" id="bsG-qL-cLB"/>
-                        <segue destination="sEZ-0c-usG" kind="show" id="bHg-88-hu4"/>
+                        <segue destination="sEZ-0c-usG" kind="show" identifier="commentSegue" id="bHg-88-hu4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiu-cL-64v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -432,9 +440,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-NF-zom">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-NF-zom">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="e0Y-k6-1Ud" customClass="CommentTableViewCell" customModule="Swiftagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
@@ -479,6 +488,11 @@
                                                 <constraint firstItem="Xe7-UU-pKy" firstAttribute="top" secondItem="c0P-cQ-q4g" secondAttribute="bottom" constant="8" id="rzN-lc-Bba"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="Xe7-UU-pKy" id="q8C-Nx-Jd6"/>
+                                            <outlet property="nameLabel" destination="c0P-cQ-q4g" id="7FC-6A-MMR"/>
+                                            <outlet property="profileImageView" destination="RJC-GJ-f5P" id="Ycm-k5-Ynq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

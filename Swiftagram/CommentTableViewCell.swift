@@ -9,7 +9,11 @@
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var commentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -20,4 +24,4 @@ class CommentTableViewCell: UITableViewCell {
         
     }
 
-}   // 24
+}   // 28
