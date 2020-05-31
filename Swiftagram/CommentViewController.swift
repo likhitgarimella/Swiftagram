@@ -30,6 +30,12 @@ class CommentViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    // Disappear tab bar
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func Properties() {
         
         commentsTableView.backgroundColor = UIColor.white
@@ -208,4 +214,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #212
+}   // #218

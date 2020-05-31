@@ -87,11 +87,13 @@ class HomeViewController: UIViewController {
         
     }
     
+    /*
     // to enable back, the tab bar VC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
     }
+    */
     
     /// it's job is to...
     /// given a user id, look up the corresponding user on db...
@@ -122,12 +124,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    @IBAction func button_touch(_ sender: UIButton) {
-        
-        self.performSegue(withIdentifier: "commentSegue", sender: nil)
-        
-    }
-    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -143,7 +139,9 @@ extension HomeViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         cell.post = post
         cell.user = user
+        // linking home VC & home table view cell
+        cell.homeVC = self
         return cell
     }
     
-}   // #150
+}   // #148

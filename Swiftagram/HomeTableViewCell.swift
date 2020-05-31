@@ -21,6 +21,9 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet var likeCountButton: UIButton!
     @IBOutlet var captionLabel: UILabel!
     
+    // linking home VC & home table view cell
+    var homeVC: HomeViewController?
+    
     var post: Post? {
         didSet {
             updateView()
@@ -91,6 +94,15 @@ class HomeTableViewCell: UITableViewCell {
         
         nameLabel.text = ""
         captionLabel.text = ""
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(commentImageViewTouch))
+        commentImageView.addGestureRecognizer(tapGesture)
+        commentImageView.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func commentImageViewTouch() {
+        
+        homeVC?.performSegue(withIdentifier: "commentSegue", sender: nil)
         
     }
     
@@ -110,4 +122,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #114
+}   // #126
