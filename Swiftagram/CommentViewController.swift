@@ -65,7 +65,7 @@ class CommentViewController: UIViewController {
         let databaseRef = Database.database().reference()
         let commentsRef = databaseRef.child("comments")
         let newCommentId = commentsRef.childByAutoId().key
-        let newCommentReference = databaseRef.child(newCommentId!)
+        let newCommentReference = commentsRef.child(newCommentId!)
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
@@ -81,6 +81,20 @@ class CommentViewController: UIViewController {
                 self.hud1.dismiss(afterDelay: 2.0, animated: true)
                 return
             }
+            let postId = "-M8Poh6AuFNqkM9ITDlc"
+            // new node to map 'posts' & 'comments'
+            let postCommentRef = databaseRef.child("post-comments").child(postId).child(newCommentId!)
+            postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    // progress hud
+                    self.hud1.show(in: self.view)
+                    self.hud1.indicatorView = nil    // remove indicator
+                    self.hud1.textLabel.text = error!.localizedDescription
+                    self.hud1.dismiss(afterDelay: 2.0, animated: true)
+                    return
+                }
+            })
             self.empty()
         })
         
@@ -94,4 +108,4 @@ class CommentViewController: UIViewController {
         
     }
     
-}   // #98
+}   // #112
