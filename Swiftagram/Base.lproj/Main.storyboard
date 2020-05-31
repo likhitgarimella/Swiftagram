@@ -554,6 +554,7 @@
                     <connections>
                         <outlet property="commentTextField" destination="oUI-lc-NW8" id="QA1-NP-W5W"/>
                         <outlet property="facultyListTableView" destination="bOk-NF-zom" id="Bki-fa-jV3"/>
+                        <outlet property="sendOutlet" destination="k00-cP-M3s" id="ClN-k9-SPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bF3-ki-vq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,7 @@ class CommentViewController: UIViewController {
     @IBOutlet var facultyListTableView: UITableView!
     
     @IBOutlet var commentTextField: UITextField!
+    @IBOutlet var sendOutlet: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -26,11 +27,33 @@ class CommentViewController: UIViewController {
         facultyListTableView.backgroundColor = UIColor.white
         
     }
+    
+    func handleTextField() {
+        
+        commentTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+    }
+    
+    @objc func textFieldDidChange() {
+        
+        if let commentText = commentTextField.text, !commentText.isEmpty {
+            sendOutlet.setTitleColor(UIColor.systemBlue, for: .normal)
+            sendOutlet.isEnabled = true
+            return
+        }
+        
+        sendOutlet.setTitleColor(UIColor.lightGray, for: .normal)
+        sendOutlet.isEnabled = false
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Properties()
+        hideKeyboardWhenTappedAround()
+        empty()
+        handleTextField()
         
     }
     
@@ -58,12 +81,17 @@ class CommentViewController: UIViewController {
                 self.hud1.dismiss(afterDelay: 2.0, animated: true)
                 return
             }
-            self.hud1.show(in: self.view)
-            self.hud1.indicatorView = nil    // remove indicator
-            self.hud1.textLabel.text = "Success!"
-            self.hud1.dismiss(afterDelay: 2.0, animated: true)
+            self.empty()
         })
         
     }
     
-}   // #70
+    func empty() {
+        
+        self.commentTextField.text = ""
+        self.sendOutlet.isEnabled = false
+        self.sendOutlet.setTitleColor(UIColor.lightGray, for: .normal)
+        
+    }
+    
+}   // #98
