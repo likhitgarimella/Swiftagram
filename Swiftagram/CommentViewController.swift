@@ -17,6 +17,9 @@ class CommentViewController: UIViewController {
     @IBOutlet var commentTextField: UITextField!
     @IBOutlet var sendOutlet: UIButton!
     
+    // dummy post id taken for example
+    let postId = "-M8Poh6AuFNqkM9ITDlc"
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = true
@@ -54,6 +57,24 @@ class CommentViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         empty()
         handleTextField()
+        loadComments()
+        
+    }
+    
+    // displaying all comments for a post
+    func loadComments() {
+        
+        let postCommentRef = Database.database().reference().child("post-comments").child(self.postId)
+        postCommentRef.observe(.childAdded, with: {
+            snapshot in
+            print("snapshot key")
+            print(snapshot.key)
+            Database.database().reference().child("comments").child(snapshot.key).observe(.value, with: {
+                snapshotComment in
+                print("snapshot comment")
+                print(snapshotComment.value)
+            })
+        })
         
     }
     
@@ -64,11 +85,13 @@ class CommentViewController: UIViewController {
         
         let databaseRef = Database.database().reference()
         let commentsRef = databaseRef.child("comments")
+        // a unique id that is generated for every comment
         let newCommentId = commentsRef.childByAutoId().key
         let newCommentReference = commentsRef.child(newCommentId!)
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
+        // uid of a user
         let currentUserId = currentUser.uid
         // put that download url string in db
         newCommentReference.setValue(["uid": currentUserId, "commentText": commentTextField.text!], withCompletionBlock: { (error, ref) in
@@ -81,9 +104,8 @@ class CommentViewController: UIViewController {
                 self.hud1.dismiss(afterDelay: 2.0, animated: true)
                 return
             }
-            let postId = "-M8Poh6AuFNqkM9ITDlc"
             // new node to map 'posts' & 'comments'
-            let postCommentRef = databaseRef.child("post-comments").child(postId).child(newCommentId!)
+            let postCommentRef = databaseRef.child("post-comments").child(self.postId).child(newCommentId!)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
                     print(error!.localizedDescription)
@@ -95,11 +117,13 @@ class CommentViewController: UIViewController {
                     return
                 }
             })
+            // empty and disable after a comment is posted
             self.empty()
         })
         
     }
     
+    // empty and disable after a comment is posted
     func empty() {
         
         self.commentTextField.text = ""
@@ -108,4 +132,4 @@ class CommentViewController: UIViewController {
         
     }
     
-}   // #112
+}   // #136
