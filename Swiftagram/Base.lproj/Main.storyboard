@@ -517,7 +517,12 @@
                                             <constraint firstAttribute="width" constant="40" id="YhV-5b-cWW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButton:" destination="sEZ-0c-usG" eventType="touchUpInside" id="7dd-As-shu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -547,6 +552,7 @@
                     <navigationItem key="navigationItem" id="1D0-r7-NFW"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="commentTextField" destination="oUI-lc-NW8" id="QA1-NP-W5W"/>
                         <outlet property="facultyListTableView" destination="bOk-NF-zom" id="Bki-fa-jV3"/>
                     </connections>
                 </viewController>
