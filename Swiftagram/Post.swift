@@ -43,10 +43,10 @@ extension Post {
     }
     
     // Video
-    /* static func transformPostVideo() -> Post {
+    static func transformPostVideo() {
         
         
         
-    } */
+    }
     
 }   // #53

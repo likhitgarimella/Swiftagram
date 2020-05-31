@@ -440,12 +440,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-NF-zom">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-NF-zom">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="686"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="e0Y-k6-1Ud" customClass="CommentTableViewCell" customModule="Swiftagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="80" id="e0Y-k6-1Ud" customClass="CommentTableViewCell" customModule="Swiftagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e0Y-k6-1Ud" id="TfQ-1J-9mU">
@@ -470,19 +471,30 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe7-UU-pKy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe7-UU-pKy">
                                                     <rect key="frame" x="68" y="39" width="318" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNQ-vs-1Hz">
+                                                    <rect key="frame" x="20" y="68" width="374" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="iq8-W7-Fos"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RJC-GJ-f5P" firstAttribute="leading" secondItem="TfQ-1J-9mU" secondAttribute="leadingMargin" id="2JM-Rd-6Yr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Xe7-UU-pKy" secondAttribute="trailing" constant="8" id="5EZ-zf-ulq"/>
+                                                <constraint firstItem="JNQ-vs-1Hz" firstAttribute="bottom" secondItem="TfQ-1J-9mU" secondAttribute="bottomMargin" id="8aa-17-WzX"/>
                                                 <constraint firstItem="Xe7-UU-pKy" firstAttribute="leading" secondItem="RJC-GJ-f5P" secondAttribute="trailing" constant="8" id="8wZ-Pb-xNA"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c0P-cQ-q4g" secondAttribute="trailing" constant="20" symbolic="YES" id="Mg0-DD-tWj"/>
+                                                <constraint firstItem="JNQ-vs-1Hz" firstAttribute="trailing" secondItem="TfQ-1J-9mU" secondAttribute="trailingMargin" id="PXQ-4b-FcT"/>
                                                 <constraint firstItem="RJC-GJ-f5P" firstAttribute="top" secondItem="TfQ-1J-9mU" secondAttribute="topMargin" id="Rfd-Ma-sX4"/>
+                                                <constraint firstItem="JNQ-vs-1Hz" firstAttribute="top" secondItem="Xe7-UU-pKy" secondAttribute="bottom" constant="10.33" id="Shv-8G-ti1"/>
+                                                <constraint firstItem="JNQ-vs-1Hz" firstAttribute="leading" secondItem="TfQ-1J-9mU" secondAttribute="leadingMargin" id="TSh-OU-DKs"/>
                                                 <constraint firstItem="c0P-cQ-q4g" firstAttribute="top" secondItem="TfQ-1J-9mU" secondAttribute="topMargin" id="gN0-1D-mWo"/>
                                                 <constraint firstItem="c0P-cQ-q4g" firstAttribute="leading" secondItem="RJC-GJ-f5P" secondAttribute="trailing" constant="8" id="gjo-k7-m2j"/>
                                                 <constraint firstItem="Xe7-UU-pKy" firstAttribute="top" secondItem="c0P-cQ-q4g" secondAttribute="bottom" constant="8" id="rzN-lc-Bba"/>
@@ -496,6 +508,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sEZ-0c-usG" id="PHv-LV-DDR"/>
+                                    <outlet property="delegate" destination="sEZ-0c-usG" id="Jan-Av-7dr"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-tL-cxe">
                                 <rect key="frame" x="0.0" y="686" width="414" height="50"/>
@@ -553,7 +569,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentTextField" destination="oUI-lc-NW8" id="QA1-NP-W5W"/>
-                        <outlet property="facultyListTableView" destination="bOk-NF-zom" id="Bki-fa-jV3"/>
+                        <outlet property="commentsTableView" destination="bOk-NF-zom" id="2Yg-XD-eO4"/>
                         <outlet property="sendOutlet" destination="k00-cP-M3s" id="ClN-k9-SPW"/>
                     </connections>
                 </viewController>

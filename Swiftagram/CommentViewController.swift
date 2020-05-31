@@ -12,13 +12,16 @@ import JGProgressHUD
 
 class CommentViewController: UIViewController {
     
-    @IBOutlet var facultyListTableView: UITableView!
+    @IBOutlet var commentsTableView: UITableView!
     
     @IBOutlet var commentTextField: UITextField!
     @IBOutlet var sendOutlet: UIButton!
     
     // dummy post id taken for example
     let postId = "-M8Poh6AuFNqkM9ITDlc"
+    
+    var comments = [Comment]()
+    var users = [User]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -27,7 +30,9 @@ class CommentViewController: UIViewController {
     
     func Properties() {
         
-        facultyListTableView.backgroundColor = UIColor.white
+        commentsTableView.backgroundColor = UIColor.white
+        commentsTableView.estimatedRowHeight = 80
+        commentsTableView.rowHeight = UITableView.automaticDimension
         
     }
     
@@ -73,7 +78,30 @@ class CommentViewController: UIViewController {
                 snapshotComment in
                 print("snapshot comment")
                 print(snapshotComment.value)
+                if let dict = snapshotComment.value as? [String: Any] {
+                    
+                    let newComment = Comment.transformComment(dict: dict)
+                    self.fetchUser(uid: newComment.uid!, completed: {
+                        self.comments.append(newComment)
+                        print(self.comments)
+                        self.commentsTableView.reloadData()
+                    })
+                    
+                }
             })
+        })
+        
+    }
+    
+    /// it's job is to, given a user id, look up the corresponding user on db...
+    func fetchUser(uid: String, completed: @escaping () -> Void) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let user = User.transformUser(dict: dict)
+                self.users.append(user)
+                completed()
+            }
         })
         
     }
@@ -132,4 +160,22 @@ class CommentViewController: UIViewController {
         
     }
     
-}   // #136
+}
+
+extension CommentViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        cell.backgroundColor = UIColor.white
+        let comment = comments[indexPath.row]
+        let user = users[indexPath.row]
+        cell.comment = comment
+        cell.user = user
+        return cell
+    }
+    
+}   // #182
