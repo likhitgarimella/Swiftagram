@@ -17,6 +17,8 @@ class CommentViewController: UIViewController {
     @IBOutlet var commentTextField: UITextField!
     @IBOutlet var sendOutlet: UIButton!
     
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    
     // dummy post id taken for example
     let postId = "-M8Poh6AuFNqkM9ITDlc"
     
@@ -63,6 +65,30 @@ class CommentViewController: UIViewController {
         empty()
         handleTextField()
         loadComments()
+        
+        // Keyboard Show
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        // Keyboard Hide
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
         
     }
     
@@ -178,4 +204,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #182
+}   // #208
