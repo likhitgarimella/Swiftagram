@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
             // dict - snapshot
             if let dict = snapshot.value as? [String: Any] {
                 
-                let newPost = Post.transformPostPhoto(dict: dict)
+                let newPost = Post.transformPostPhoto(dict: dict, key: snapshot.key)
                 // print(dict)
                 /// Unexpectedly found nil while unwrapping an Optional value...
                 /// To resolve this issue...
@@ -124,6 +124,16 @@ class HomeViewController: UIViewController {
         
     }
     
+    // prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentSegue" {
+            let commentVC = segue.destination as! CommentViewController
+            //
+            let postId = sender as! String
+            commentVC.postId = postId
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -144,4 +154,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #148
+}   // #158

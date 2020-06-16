@@ -20,7 +20,10 @@ class CommentViewController: UIViewController {
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     // dummy post id taken for example
-    let postId = "-M8Poh6AuFNqkM9ITDlc"
+    // let postId = "-M8Poh6AuFNqkM9ITDlc"
+    
+    // Initialise empty string
+    var postId: String!
     
     var comments = [Comment]()
     var users = [User]()
@@ -65,6 +68,9 @@ class CommentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // nav bar title
+        title = "Comments"
         
         Properties()
         hideKeyboardWhenTappedAround()
@@ -214,4 +220,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #218
+}   // #224

@@ -15,6 +15,9 @@ class Post {
     // var videoUrl: String?
     var uid: String?
     
+    /// Remodel Post class, bcuz it currently doesn't have a post id property
+    var id: String?
+    
     /*
     init(captionText: String, photoUrlString: String) {
         caption = captionText
@@ -32,9 +35,11 @@ class Post {
 extension Post {
     
     // Photo
-    static func transformPostPhoto(dict: [String: Any]) -> Post {
+    static func transformPostPhoto(dict: [String: Any], key: String) -> Post {
         
         let post = Post()
+        /// Remodel Post class, bcuz it currently doesn't have a post id property
+        post.id = key
         post.caption = dict["caption"] as? String
         post.photoUrl = dict["photoUrl"] as? String
         post.uid = dict["uid"] as? String
@@ -49,4 +54,4 @@ extension Post {
         
     }
     
-}   // #53
+}   // #58

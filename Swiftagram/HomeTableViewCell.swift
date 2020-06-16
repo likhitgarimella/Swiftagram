@@ -102,7 +102,9 @@ class HomeTableViewCell: UITableViewCell {
     
     @objc func commentImageViewTouch() {
         
-        homeVC?.performSegue(withIdentifier: "commentSegue", sender: nil)
+        if let id = post?.uid {
+            homeVC?.performSegue(withIdentifier: "commentSegue", sender: id)
+        }
         
     }
     
@@ -122,4 +124,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #126
+}   // #128
