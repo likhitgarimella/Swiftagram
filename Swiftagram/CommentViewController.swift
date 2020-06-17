@@ -109,8 +109,8 @@ class CommentViewController: UIViewController {
     // displaying all comments for a post
     func loadComments() {
         
-        let postCommentRef = Database.database().reference().child("post-comments").child(self.postId)
-        postCommentRef.observe(.childAdded, with: {
+        // let postCommentRef = Database.database().reference().child("post-comments").child(self.postId)
+        Api.PostComment.REF_POST_COMMENTS.child(self.postId).observe(.childAdded, with: {
             snapshot in
             // print("snapshot key")
             // print(snapshot.key)
@@ -169,8 +169,7 @@ class CommentViewController: UIViewController {
     
     @IBAction func sendButton(_ sender: UIButton) {
         
-        let databaseRef = Database.database().reference()
-        let commentsRef = databaseRef.child("comments")
+        let commentsRef = Api.Comment.REF_COMMENTS
         // a unique id that is generated for every comment
         let newCommentId = commentsRef.childByAutoId().key
         let newCommentReference = commentsRef.child(newCommentId!)
@@ -191,7 +190,7 @@ class CommentViewController: UIViewController {
                 return
             }
             // new node to map 'posts' & 'comments'
-            let postCommentRef = databaseRef.child("post-comments").child(self.postId).child(newCommentId!)
+            let postCommentRef = Api.PostComment.REF_POST_COMMENTS.child(self.postId).child(newCommentId!)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
                     print(error!.localizedDescription)
@@ -238,4 +237,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #242
+}   // #241

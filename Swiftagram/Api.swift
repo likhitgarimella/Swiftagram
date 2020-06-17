@@ -15,5 +15,6 @@ struct Api {
     static var User = UserApi()
     static var Post = PostApi()
     static var Comment = CommentApi()
+    static var PostComment = PostCommentApi()
     
-}   // #20
+}   // #21
