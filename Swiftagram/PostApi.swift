@@ -17,14 +17,14 @@ class PostApi {
     
     func observePosts(completion: @escaping (Post) -> Void) {
         
-        REF_POSTS.observe(.childAdded) { (snapshot) in
+        REF_POSTS.observe(.childAdded, with: { (snapshot) in
             
             if let dict = snapshot.value as? [String: Any] {
                 let newPost = Post.transformPostPhoto(dict: dict, key: snapshot.key)
                 completion(newPost)
             }
             
-        }
+        })
         
     }
     

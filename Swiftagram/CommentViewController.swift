@@ -114,6 +114,16 @@ class CommentViewController: UIViewController {
             snapshot in
             print("snapshot key")
             print(snapshot.key)
+            
+            Api.Comment.observeComments(withPostId: snapshot.key, completion: { comment in
+                self.fetchUser(uid: comment.uid!, completed: {
+                    self.comments.append(comment)
+                    print(self.comments)
+                    self.commentsTableView.reloadData()
+                })
+            })
+            
+            /*
             Database.database().reference().child("comments").child(snapshot.key).observe(.value, with: {
                 snapshotComment in
                 print("snapshot comment")
@@ -128,7 +138,8 @@ class CommentViewController: UIViewController {
                     })
                     
                 }
-            })
+            })  */
+            
         })
         
     }
@@ -220,4 +231,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #224
+}   // #235

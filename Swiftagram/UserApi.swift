@@ -18,12 +18,14 @@ class UserApi {
     func obersveUser(withId uid: String, completion: @escaping (User) -> Void) {
         
         REF_USERS.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
             if let dict = snapshot.value as? [String:Any] {
                 let user = User.transformUser(dict: dict)
                 completion(user)
             }
+            
         })
         
     }
     
-}   // #30
+}   // #32
