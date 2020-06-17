@@ -53,7 +53,10 @@ class HomeViewController: UIViewController {
         activityIndicatorView.startAnimating()
         
         Api.Post.observePosts { (post) in
-            self.fetchUser(uid: post.uid!, completed: {
+            guard let postId = post.uid else {
+                return
+            }
+            self.fetchUser(uid: postId, completed: {
                 self.posts.append(post)
                 // print(self.posts)
                 // stop before tablew view reloads data
@@ -163,4 +166,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #167
+}   // #170
