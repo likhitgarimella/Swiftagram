@@ -111,12 +111,9 @@ class HomeViewController: UIViewController {
     /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-            }
+        UserApi().obersveUser(withId: uid, completion: { (user) in
+            self.users.append(user)
+            completed()
         })
         
     }
@@ -166,4 +163,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #170
+}   // #167
