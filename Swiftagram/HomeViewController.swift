@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         // start when loadPosts func starts
         activityIndicatorView.startAnimating()
         
-        PostApi().observePosts { (post) in
+        Api.Post.observePosts { (post) in
             self.fetchUser(uid: post.uid!, completed: {
                 self.posts.append(post)
                 // print(self.posts)
@@ -111,7 +111,7 @@ class HomeViewController: UIViewController {
     /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         
-        UserApi().obersveUser(withId: uid, completion: { (user) in
+        Api.User.obersveUser(withId: uid, completion: { (user) in
             self.users.append(user)
             completed()
         })

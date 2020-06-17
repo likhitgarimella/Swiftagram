@@ -14,6 +14,7 @@
 		02B51340247C911600FD2087 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5133F247C911600FD2087 /* AuthService.swift */; };
 		02D6B92E2499927E0008B503 /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B92D2499927E0008B503 /* PostApi.swift */; };
 		02D6B930249A8BFC0008B503 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B92F249A8BFB0008B503 /* UserApi.swift */; };
+		02D6B932249AA0170008B503 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B931249AA0170008B503 /* Api.swift */; };
 		02DC18D82482ACAD00CBC10C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC18D72482ACAD00CBC10C /* CommentViewController.swift */; };
 		02DC18DA2482ACDD00CBC10C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */; };
 		02DCEEF6247E490500AF1876 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DCEEF5247E490500AF1876 /* Post.swift */; };
@@ -42,6 +43,7 @@
 		02B5133F247C911600FD2087 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		02D6B92D2499927E0008B503 /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 		02D6B92F249A8BFB0008B503 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		02D6B931249AA0170008B503 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		02DC18D72482ACAD00CBC10C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		02DCEEF5247E490500AF1876 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				02B5133F247C911600FD2087 /* AuthService.swift */,
 				02F94D8D247A649000887DAD /* SignInViewController.swift */,
 				02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */,
+				02D6B931249AA0170008B503 /* Api.swift */,
 				02DCEEF5247E490500AF1876 /* Post.swift */,
 				02D6B92D2499927E0008B503 /* PostApi.swift */,
 				02A0736A247FC3DE008C5D46 /* User.swift */,
@@ -289,6 +292,7 @@
 				02F94DA3247A8B4D00887DAD /* SignUpViewController.swift in Sources */,
 				02D6B92E2499927E0008B503 /* PostApi.swift in Sources */,
 				02F94DA5247AAF5300887DAD /* HomeViewController.swift in Sources */,
+				02D6B932249AA0170008B503 /* Api.swift in Sources */,
 				02D6B930249A8BFC0008B503 /* UserApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
