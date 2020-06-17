@@ -112,13 +112,13 @@ class CommentViewController: UIViewController {
         let postCommentRef = Database.database().reference().child("post-comments").child(self.postId)
         postCommentRef.observe(.childAdded, with: {
             snapshot in
-            print("snapshot key")
-            print(snapshot.key)
+            // print("snapshot key")
+            // print(snapshot.key)
             
             Api.Comment.observeComments(withPostId: snapshot.key, completion: { comment in
                 self.fetchUser(uid: comment.uid!, completed: {
                     self.comments.append(comment)
-                    print(self.comments)
+                    // print(self.comments)
                     self.commentsTableView.reloadData()
                 })
             })
@@ -144,16 +144,23 @@ class CommentViewController: UIViewController {
         
     }
     
-    /// it's job is to, given a user id, look up the corresponding user on db...
+    /// it's job is to...
+    /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         
+        Api.User.obersveUser(withId: uid, completion: { (user) in
+            self.users.append(user)
+            completed()
+        })
+        
+        /*
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let user = User.transformUser(dict: dict)
                 self.users.append(user)
                 completed()
             }
-        })
+        })  */
         
     }
     
@@ -231,4 +238,4 @@ extension CommentViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #235
+}   // #242
