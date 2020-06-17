@@ -52,6 +52,18 @@ class HomeViewController: UIViewController {
         // start when loadPosts func starts
         activityIndicatorView.startAnimating()
         
+        PostApi().observePosts { (post) in
+            self.fetchUser(uid: post.uid!, completed: {
+                self.posts.append(post)
+                // print(self.posts)
+                // stop before tablew view reloads data
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorView.hidesWhenStopped = true
+                self.tableView.reloadData()
+            })
+        }
+        
+        /*
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             
             // print(snapshot.value)
@@ -83,7 +95,7 @@ class HomeViewController: UIViewController {
                 
             }
             
-        }
+        } */
         
     }
     
@@ -154,4 +166,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #158
+}   // #170
