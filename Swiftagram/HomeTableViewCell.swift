@@ -67,15 +67,24 @@ class HomeTableViewCell: UITableViewCell {
         }
         */  /// Unscalable way of liking posts.. old method..
         
-        // Update like
+        /// Update like
         updateLike(post: post!)
         
-        // Update like count
+        /// Update like count
         Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
             snapshot in
             print(snapshot)
             if let value = snapshot.value as? Int {
                 self.likeCountButton.setTitle("\(value) likes", for: .normal)
+            }
+        })
+        
+        /// Smoothly update like, when scrolling view
+        Api.Post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let dict = snapshot.value as? [String: Any] {
+                let post = Post.transformPostPhoto(dict: dict, key: snapshot.key)
+                self.updateLike(post: post)
             }
         })
         
@@ -256,4 +265,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #260
+}   // #269
