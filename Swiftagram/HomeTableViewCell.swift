@@ -48,6 +48,21 @@ class HomeTableViewCell: UITableViewCell {
         
         setupUserInfo()
         
+        /// We need to make the cell/post aware be aware, that current user liked it..
+        if let currentUser = Auth.auth().currentUser {
+            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                print(snapshot)
+                if let _ = snapshot.value as? NSNull {
+                    // current user didn't like the post
+                    self.likeImageView.image = UIImage(named: "like")
+                } else {
+                    // current user liked the post
+                    self.likeImageView.image = UIImage(named: "likeSelected")
+                }
+            })
+        }
+        
     }
     
     /// New setupUserInfo() func
@@ -136,4 +151,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #140
+}   // #155
