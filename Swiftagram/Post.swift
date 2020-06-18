@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Post {
     
@@ -20,6 +21,8 @@ class Post {
     
     var likeCount: Int?
     var likes: Dictionary<String, Any>?
+    
+    var isLiked: Bool?
     
     /*
     init(captionText: String, photoUrlString: String) {
@@ -50,6 +53,18 @@ extension Post {
         post.likeCount = dict["likeCount"] as? Int
         post.likes = dict["likes"] as? Dictionary<String, Any>
         
+        if let currentUserId = Auth.auth().currentUser?.uid {
+            if post.likes != nil {
+                /* if post.likes[currentUserId] != nil {
+                    post.isLiked = true
+                } else {
+                    post.isLiked = false
+                } */
+                /// Above commented snippet can be put in 1 line.. as below..
+                post.isLiked = post.likes![currentUserId] != nil
+            }
+        }
+        
         return post
         
     }
@@ -61,4 +76,4 @@ extension Post {
         
     }
     
-}   // #65
+}   // #80

@@ -67,6 +67,37 @@ class HomeTableViewCell: UITableViewCell {
         }
         */  /// Unscalable way of liking posts.. old method..
         
+        updateLike(post: post!)
+        
+    }
+    
+    func updateLike(post: Post) {
+        
+        print(post.isLiked)
+        /// we first checked if its true, and no one liked this post before..
+        /// or if probably someone did, but the current user did not..
+        /// then we display, non-selected like icon..
+        /// otherwise, display likeSelected icon..
+        let imageName = post.likes == nil || !post.isLiked! ? "like" : "likeSelected"
+        likeImageView.image = UIImage(named: imageName)
+        /// Below commented snippet can be put in 1 line.. as above..
+        /* if post.isLiked == false {
+            likeImageView.image = UIImage(named: "like")
+        } else {
+            likeImageView.image = UIImage(named: "likeSelected")
+        } */
+        
+        // We now update like count
+        /// Use optional chaining with guard
+        guard let count = post.likeCount else {
+            return
+        }
+        if count != 0 {
+            likeCountButton.setTitle("\(count) likes", for: .normal)
+        } else {
+            likeCountButton.setTitle("Be the first to like this", for: .normal)
+        }
+        
     }
     
     /// New setupUserInfo() func
@@ -182,6 +213,10 @@ class HomeTableViewCell: UITableViewCell {
                 print(error.localizedDescription)
             }
             print("Value 2: \(snapshot?.value)")
+            if let dict = snapshot?.value as? [String: Any] {
+                let post = Post.transformPostPhoto(dict: dict, key: snapshot!.key)
+                self.updateLike(post: post)
+            }
             
         }
         
@@ -211,4 +246,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #215
+}   // #250
