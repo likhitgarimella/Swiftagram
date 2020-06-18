@@ -121,8 +121,26 @@ class HomeTableViewCell: UITableViewCell {
     
     @objc func likeImageViewTouch() {
         
-        if let currentUser = Auth.auth().currentUser {
+        /* if let currentUser = Auth.auth().currentUser {
             Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).setValue(true)
+        } */
+        
+        if let currentUser = Auth.auth().currentUser {
+            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
+                
+                snapshot in
+                print(snapshot)
+                if let _ = snapshot.value as? NSNull {
+                    // If no value, on image touch, then set value to true, which gives a like
+                    Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).setValue(true)
+                    self.likeImageView.image = UIImage(named: "likeSelected")
+                } else {
+                    // If already a value, on image touch, then remove value, which removes a like
+                    Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).removeValue()
+                    self.likeImageView.image = UIImage(named: "like")
+                }
+                
+            })
         }
         
     }
@@ -151,4 +169,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #155
+}   // #173
