@@ -98,6 +98,18 @@ class HomeTableViewCell: UITableViewCell {
         commentImageView.addGestureRecognizer(tapGesture)
         commentImageView.isUserInteractionEnabled = true
         
+        let tapGestureForLikeImageView = UITapGestureRecognizer(target: self, action: #selector(likeImageViewTouch))
+        likeImageView.addGestureRecognizer(tapGestureForLikeImageView)
+        likeImageView.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func likeImageViewTouch() {
+        
+        if let currentUser = Auth.auth().currentUser {
+            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).setValue(true)
+        }
+        
     }
     
     @objc func commentImageViewTouch() {
@@ -124,4 +136,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #128
+}   // #140
