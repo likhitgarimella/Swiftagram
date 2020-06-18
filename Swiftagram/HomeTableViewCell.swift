@@ -24,6 +24,8 @@ class HomeTableViewCell: UITableViewCell {
     // linking home VC & home table view cell
     var homeVC: HomeViewController?
     
+    var postRef: DatabaseReference!
+    
     var post: Post? {
         didSet {
             updateView()
@@ -48,6 +50,7 @@ class HomeTableViewCell: UITableViewCell {
         
         setupUserInfo()
         
+        /*
         /// We need to make the cell/post aware be aware, that current user liked it..
         if let currentUser = Auth.auth().currentUser {
             Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
@@ -62,6 +65,7 @@ class HomeTableViewCell: UITableViewCell {
                 }
             })
         }
+        */  /// Unscalable way of liking posts.. old method..
         
     }
     
@@ -125,6 +129,7 @@ class HomeTableViewCell: UITableViewCell {
             Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).setValue(true)
         } */
         
+        /*
         if let currentUser = Auth.auth().currentUser {
             Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
                 
@@ -141,6 +146,43 @@ class HomeTableViewCell: UITableViewCell {
                 }
                 
             })
+        }
+        */  /// Unscalable way of liking posts.. old method..
+        
+        postRef = Api.Post.REF_POSTS.child(post!.id!)
+        incrementLikes(forRef: postRef)
+        
+    }
+    
+    func incrementLikes(forRef ref: DatabaseReference) {
+        
+        ref.runTransactionBlock ({ (currentData: MutableData) -> TransactionResult in
+            if var post = currentData.value as? [String: AnyObject], let uid = Auth.auth().currentUser?.uid {
+                print("Value 1: \(currentData.value)")
+                var likes: Dictionary<String, Bool>
+                likes = post["likes"] as? [String: Bool] ?? [:]
+                var likeCount = post["likeCount"] as? Int ?? 0
+                if let _ = likes[uid] {
+                    likeCount -= 1
+                    likes.removeValue(forKey: uid)
+                } else {
+                    likeCount += 1
+                    likes[uid] = true
+                }
+                post["likeCount"] = likeCount as AnyObject
+                post["likes"] = likes as AnyObject
+                
+                currentData.value = post
+                
+                return TransactionResult.success(withValue: currentData)
+            }
+            return TransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            print("Value 2: \(snapshot?.value)")
+            
         }
         
     }
@@ -169,4 +211,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #173
+}   // #215
