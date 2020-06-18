@@ -67,7 +67,17 @@ class HomeTableViewCell: UITableViewCell {
         }
         */  /// Unscalable way of liking posts.. old method..
         
+        // Update like
         updateLike(post: post!)
+        
+        // Update like count
+        Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
+            snapshot in
+            print(snapshot)
+            if let value = snapshot.value as? Int {
+                self.likeCountButton.setTitle("\(value) likes", for: .normal)
+            }
+        })
         
     }
     
@@ -189,7 +199,7 @@ class HomeTableViewCell: UITableViewCell {
         
         ref.runTransactionBlock ({ (currentData: MutableData) -> TransactionResult in
             if var post = currentData.value as? [String: AnyObject], let uid = Auth.auth().currentUser?.uid {
-                print("Value 1: \(currentData.value)")
+                // print("Value 1: \(currentData.value)")
                 var likes: Dictionary<String, Bool>
                 likes = post["likes"] as? [String: Bool] ?? [:]
                 var likeCount = post["likeCount"] as? Int ?? 0
@@ -212,7 +222,7 @@ class HomeTableViewCell: UITableViewCell {
             if let error = error {
                 print(error.localizedDescription)
             }
-            print("Value 2: \(snapshot?.value)")
+            // print("Value 2: \(snapshot?.value)")
             if let dict = snapshot?.value as? [String: Any] {
                 let post = Post.transformPostPhoto(dict: dict, key: snapshot!.key)
                 self.updateLike(post: post)
@@ -246,4 +256,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #250
+}   // #260
