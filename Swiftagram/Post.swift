@@ -18,6 +18,9 @@ class Post {
     /// Remodel Post class, bcuz it currently doesn't have a post id property
     var id: String?
     
+    var likeCount: Int?
+    var likes: Dictionary<String, Any>?
+    
     /*
     init(captionText: String, photoUrlString: String) {
         caption = captionText
@@ -43,6 +46,10 @@ extension Post {
         post.caption = dict["caption"] as? String
         post.photoUrl = dict["photoUrl"] as? String
         post.uid = dict["uid"] as? String
+        
+        post.likeCount = dict["likeCount"] as? Int
+        post.likes = dict["likes"] as? Dictionary<String, Any>
+        
         return post
         
     }
@@ -54,4 +61,4 @@ extension Post {
         
     }
     
-}   // #58
+}   // #65
