@@ -12,8 +12,11 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
     func updateView() {
         
-        
+        Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
+            snapshot in
+            print(snapshot)
+        })
         
     }
         
-}   // #14
+}   // #23
