@@ -728,6 +728,13 @@
                                         <constraint firstItem="3B9-zf-vKT" firstAttribute="top" secondItem="wjb-Iz-RE3" secondAttribute="top" constant="20" id="tdR-9q-3Zn"/>
                                         <constraint firstItem="rqB-bd-YRs" firstAttribute="leading" secondItem="3B9-zf-vKT" secondAttribute="trailing" constant="12" id="xYc-Cr-Ftm"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="followersCountLabel" destination="uYs-Sb-6Pg" id="90q-SQ-lqb"/>
+                                        <outlet property="followingCountLabel" destination="dCh-My-e7P" id="oi6-Nt-8eF"/>
+                                        <outlet property="myPostCountLabel" destination="1qa-Hw-Row" id="L6C-VL-vj6"/>
+                                        <outlet property="nameLabel" destination="QrK-sb-VEU" id="bFW-ja-j2e"/>
+                                        <outlet property="profileImage" destination="3B9-zf-vKT" id="Cg0-vb-vmz"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="inQ-l6-cBG" id="qiQ-Zk-kBg"/>

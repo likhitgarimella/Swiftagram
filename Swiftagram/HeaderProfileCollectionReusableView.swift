@@ -10,6 +10,13 @@ import UIKit
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
+    //Outlets
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var myPostCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    
     func updateView() {
         
         Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
@@ -19,4 +26,4 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         
     }
         
-}   // #23
+}   // #30
