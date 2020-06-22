@@ -20,7 +20,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
     func updateView() {
         
-        /// Old code
+        /// Old code 1
         /* Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
             snapshot in
             print(snapshot)
@@ -36,7 +36,8 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             
         }) */
         
-        guard let currentUser = Auth.auth().currentUser else {
+        /// Old code 2
+        /* guard let currentUser = Auth.auth().currentUser else {
             return
         }
         
@@ -46,8 +47,16 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
                 let photoUrl = URL(string: photoUrlString)
                 self.profileImage.sd_setImage(with: photoUrl)
             }
-        })
+        }) */
+        
+        Api.User.observeCurrentUser { (user) in
+            self.nameLabel.text = user.usernameString
+            if let photoUrlString = user.profileImageUrlString {
+                let photoUrl = URL(string: photoUrlString)
+                self.profileImage.sd_setImage(with: photoUrl)
+            }
+        }
         
     }
         
-}   // #54
+}   // #63
