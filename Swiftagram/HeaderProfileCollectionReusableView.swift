@@ -9,5 +9,11 @@
 import UIKit
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
+    
+    func updateView() {
+        
+        
+        
+    }
         
 }   // #14
