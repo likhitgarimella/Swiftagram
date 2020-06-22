@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
@@ -19,7 +20,8 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
     func updateView() {
         
-        Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
+        /// Old code
+        /* Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
             snapshot in
             print(snapshot)
             
@@ -32,8 +34,20 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
                 }
             }
             
+        }) */
+        
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        
+        Api.User.obersveUser(withId: currentUser.uid, completion: { (user) in
+            self.nameLabel.text = user.usernameString
+            if let photoUrlString = user.profileImageUrlString {
+                let photoUrl = URL(string: photoUrlString)
+                self.profileImage.sd_setImage(with: photoUrl)
+            }
         })
         
     }
         
-}   // #40
+}   // #54
