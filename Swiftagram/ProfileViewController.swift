@@ -11,11 +11,23 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     @IBOutlet var profileCollectionView: UICollectionView!
+    
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         profileCollectionView.dataSource = self
+        
+        fetchUser()
+        
+    }
+    
+    func fetchUser() {
+        
+        Api.User.observeCurrentUser { (user) in
+            self.user = user
+        }
         
     }
     
@@ -42,4 +54,4 @@ extension ProfileViewController: UICollectionViewDataSource {
         
     }
     
-}   // #46
+}   // #58
