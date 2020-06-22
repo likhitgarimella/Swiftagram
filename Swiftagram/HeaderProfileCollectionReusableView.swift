@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
@@ -18,7 +17,19 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     
+    var user: User? {
+        didSet {
+            updateView()
+        }
+    }
+    
     func updateView() {
+        
+        self.nameLabel.text = user!.usernameString
+        if let photoUrlString = user!.profileImageUrlString {
+            let photoUrl = URL(string: photoUrlString)
+            self.profileImage.sd_setImage(with: photoUrl)
+        }
         
         /// Old code 1
         /* Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
@@ -49,14 +60,6 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             }
         }) */
         
-        Api.User.observeCurrentUser { (user) in
-            self.nameLabel.text = user.usernameString
-            if let photoUrlString = user.profileImageUrlString {
-                let photoUrl = URL(string: photoUrlString)
-                self.profileImage.sd_setImage(with: photoUrl)
-            }
-        }
-        
     }
         
-}   // #63
+}   // #66

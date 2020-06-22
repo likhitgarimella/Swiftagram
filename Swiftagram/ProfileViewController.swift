@@ -25,8 +25,10 @@ class ProfileViewController: UIViewController {
     
     func fetchUser() {
         
+        /// observeCurrentUser
         Api.User.observeCurrentUser { (user) in
             self.user = user
+            self.profileCollectionView.reloadData()
         }
         
     }
@@ -49,9 +51,11 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfileCollectionReusableView", for: indexPath) as! HeaderProfileCollectionReusableView
-        headerViewCell.updateView()
+        if let user = self.user {
+            headerViewCell.user = user
+        }
         return headerViewCell
         
     }
     
-}   // #58
+}   // #62
