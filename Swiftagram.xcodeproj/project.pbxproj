@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		024A05552483B50200CC06CB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A05542483B50200CC06CB /* Comment.swift */; };
+		0270AF2024A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */; };
 		02A07369247F7B2F008C5D46 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */; };
 		02A0736B247FC3DE008C5D46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0736A247FC3DE008C5D46 /* User.swift */; };
 		02B5133E247B3BB000FD2087 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		024A05542483B50200CC06CB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		02A0736A247FC3DE008C5D46 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
 				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
 				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
+				0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */,
 				02F94D9D247A780400887DAD /* Extensions.swift */,
 				02F94D92247A649400887DAD /* Assets.xcassets */,
 				02F94D97247A649400887DAD /* Info.plist */,
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0270AF2024A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift in Sources */,
 				02F94D8E247A649000887DAD /* SignInViewController.swift in Sources */,
 				02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */,
 				02A07369247F7B2F008C5D46 /* HomeTableViewCell.swift in Sources */,
