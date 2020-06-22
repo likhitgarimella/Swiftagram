@@ -729,6 +729,10 @@
                                         <constraint firstItem="rqB-bd-YRs" firstAttribute="leading" secondItem="3B9-zf-vKT" secondAttribute="trailing" constant="12" id="xYc-Cr-Ftm"/>
                                     </constraints>
                                 </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="inQ-l6-cBG" id="qiQ-Zk-kBg"/>
+                                    <outlet property="delegate" destination="inQ-l6-cBG" id="Qbc-g5-mWY"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -741,6 +745,9 @@
                         <viewLayoutGuide key="safeArea" id="vig-ru-zwV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="uin-Zs-3bZ"/>
+                    <connections>
+                        <outlet property="profileCollectionView" destination="UGq-SR-8yY" id="aqr-7c-IaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hB-Y5-6Gn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
