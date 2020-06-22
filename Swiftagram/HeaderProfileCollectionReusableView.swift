@@ -22,8 +22,18 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         Api.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: {
             snapshot in
             print(snapshot)
+            
+            if let dict = snapshot.value as? [String: Any] {
+                let user = User.transformUser(dict: dict)
+                self.nameLabel.text = user.usernameString
+                if let photoUrlString = user.profileImageUrlString {
+                    let photoUrl = URL(string: photoUrlString)
+                    self.profileImage.sd_setImage(with: photoUrl)
+                }
+            }
+            
         })
         
     }
         
-}   // #30
+}   // #40
