@@ -182,6 +182,22 @@ class CameraViewController: UIViewController, UITextViewDelegate {
                 self.hud1.dismiss(afterDelay: 2.0, animated: true)
                 return
             }
+            
+            // reference for my posts
+            let myPostRef = Api.MyPosts.REF_MYPOSTS.child(currentUserId).child(newPostId!)
+            myPostRef.setValue(true, withCompletionBlock: {
+                (error, ref) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    // progress hud
+                    self.hud1.show(in: self.view)
+                    self.hud1.indicatorView = nil    // remove indicator
+                    self.hud1.textLabel.text = error!.localizedDescription
+                    self.hud1.dismiss(afterDelay: 2.0, animated: true)
+                    return
+                }
+            })
+            
             self.hud1.show(in: self.view)
             self.hud1.indicatorView = nil    // remove indicator
             self.hud1.textLabel.text = "Success!"
@@ -214,4 +230,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #218
+}   // #234
