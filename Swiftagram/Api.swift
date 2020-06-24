@@ -18,4 +18,4 @@ struct Api {
     static var PostComment = PostCommentApi()
     static var MyPosts = MyPostsApi()
     
-}   // #21
+}   // #22

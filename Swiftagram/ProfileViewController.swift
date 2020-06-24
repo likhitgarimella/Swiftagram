@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileCollectionView: UICollectionView!
     
     var user: User!
+    
+    var posts: [Post] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,12 @@ class ProfileViewController: UIViewController {
         Api.MyPosts.REF_MYPOSTS.child(currentUser.uid).observe(.childAdded, with: {
             snapshot in
             print(snapshot)
+            Api.Post.observePost(withId: snapshot.key, completion: {
+                post in
+                print(post.id)
+                self.posts.append(post)
+                self.profileCollectionView.reloadData()
+            })
         })
         
     }
@@ -73,4 +81,4 @@ extension ProfileViewController: UICollectionViewDataSource {
         
     }
     
-}   // #77
+}   // #85
