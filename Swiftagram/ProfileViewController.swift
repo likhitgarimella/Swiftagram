@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
     
@@ -21,6 +22,8 @@ class ProfileViewController: UIViewController {
         
         fetchUser()
         
+        fetchMyPosts()
+        
     }
     
     func fetchUser() {
@@ -30,6 +33,18 @@ class ProfileViewController: UIViewController {
             self.user = user
             self.profileCollectionView.reloadData()
         }
+        
+    }
+    
+    func fetchMyPosts() {
+        
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        Api.MyPosts.REF_MYPOSTS.child(currentUser.uid).observe(.childAdded, with: {
+            snapshot in
+            print(snapshot)
+        })
         
     }
     
@@ -58,4 +73,4 @@ extension ProfileViewController: UICollectionViewDataSource {
         
     }
     
-}   // #62
+}   // #77
