@@ -90,7 +90,8 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     
     // spacing b/w rows in coll view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        /// spacing distance = 2
+        return 2
     }
     
     // spacing b/w columns in coll view
@@ -99,7 +100,8 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width / 3, height: collectionView.frame.size.width / 3)
+        /// shrink by 1 point for each cell, so that spacing becomes 2 b/w cell-to-cell
+        return CGSize(width: collectionView.frame.size.width / 3 - 1, height: collectionView.frame.size.width / 3 - 1)
     }
     
-}   // #106
+}   // #108
