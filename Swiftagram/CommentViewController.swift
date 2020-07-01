@@ -26,7 +26,7 @@ class CommentViewController: UIViewController {
     var postId: String!
     
     var comments = [Comment]()
-    var users = [User]()
+    var users = [AppUser]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -148,7 +148,7 @@ class CommentViewController: UIViewController {
     /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         
-        Api.User.obersveUser(withId: uid, completion: { (user) in
+        Api.UserDet.obersveUser(withId: uid, completion: { (user) in
             self.users.append(user)
             completed()
         })

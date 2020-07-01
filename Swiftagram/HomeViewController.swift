@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     var posts = [Post]()
     
     // reference to store User class info
-    var users = [User]()
+    var users = [AppUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,7 @@ class HomeViewController: UIViewController {
     /// given a user id, look up the corresponding user on db...
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         
-        Api.User.obersveUser(withId: uid, completion: { (user) in
+        Api.UserDet.obersveUser(withId: uid, completion: { (user) in
             self.users.append(user)
             completed()
         })

@@ -102,8 +102,8 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if Auth.auth().currentUser != nil {
-            print("Current user: \(Auth.auth().currentUser)")
+        if Api.UserDet.CURRENT_USER != nil {
+            // print("Current user: \(Auth.auth().currentUser)")
             // segue to tab bar VC
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
         }

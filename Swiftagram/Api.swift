@@ -12,7 +12,7 @@ import Foundation
 
 struct Api {
     
-    static var User = UserApi()
+    static var UserDet = UserApi()
     static var Post = PostApi()
     static var Comment = CommentApi()
     static var PostComment = PostCommentApi()

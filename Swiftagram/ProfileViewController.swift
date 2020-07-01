@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet var profileCollectionView: UICollectionView!
     
-    var user: User!
+    var user: AppUser!
     
     var posts: [Post] = []
 
@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     func fetchUser() {
         
         /// observeCurrentUser
-        Api.User.observeCurrentUser { (user) in
+        Api.UserDet.observeCurrentUser { (user) in
             self.user = user
             self.profileCollectionView.reloadData()
         }
