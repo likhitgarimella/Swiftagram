@@ -4,3 +4,5 @@ Swiftagram
 
 ### _Frontend + Backend: -_
 Part-1: [Auth+Post+Feed+Like+Comment]
+
+#### _profile screen_
