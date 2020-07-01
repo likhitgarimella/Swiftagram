@@ -10,6 +10,7 @@
 		024A05552483B50200CC06CB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A05542483B50200CC06CB /* Comment.swift */; };
 		0270AF2024A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */; };
 		02998CCA24AC28BC004ED0AC /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998CC924AC28BC004ED0AC /* PhotoCollectionViewCell.swift */; };
+		02998CCC24AC835D004ED0AC /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998CCB24AC835D004ED0AC /* HelperService.swift */; };
 		02A07369247F7B2F008C5D46 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */; };
 		02A0736B247FC3DE008C5D46 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0736A247FC3DE008C5D46 /* AppUser.swift */; };
 		02AB7CCD24A2E68000610431 /* MyPostsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB7CCC24A2E68000610431 /* MyPostsApi.swift */; };
@@ -44,6 +45,7 @@
 		024A05542483B50200CC06CB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		02998CC924AC28BC004ED0AC /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		02998CCB24AC835D004ED0AC /* HelperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
 		02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		02A0736A247FC3DE008C5D46 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		02AB7CCC24A2E68000610431 /* MyPostsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsApi.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				02DC18D72482ACAD00CBC10C /* CommentViewController.swift */,
 				02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */,
 				02F94DA6247AAF6300887DAD /* DiscoverViewController.swift */,
+				02998CCB24AC835D004ED0AC /* HelperService.swift */,
 				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
 				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
 				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
@@ -308,6 +311,7 @@
 				02F94DAB247AAF7A00887DAD /* ActivityViewController.swift in Sources */,
 				02DC18DA2482ACDD00CBC10C /* CommentTableViewCell.swift in Sources */,
 				02F94D9E247A780400887DAD /* Extensions.swift in Sources */,
+				02998CCC24AC835D004ED0AC /* HelperService.swift in Sources */,
 				02F94DA9247AAF6F00887DAD /* CameraViewController.swift in Sources */,
 				02F94DA3247A8B4D00887DAD /* SignUpViewController.swift in Sources */,
 				02D6B92E2499927E0008B503 /* PostApi.swift in Sources */,
