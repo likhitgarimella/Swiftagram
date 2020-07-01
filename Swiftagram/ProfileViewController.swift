@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         profileCollectionView.dataSource = self
+        profileCollectionView.delegate = self
         
         fetchUser()
         
@@ -83,4 +84,12 @@ extension ProfileViewController: UICollectionViewDataSource {
         
     }
     
-}   // #85
+}
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width / 3, height: collectionView.frame.size.width / 3)
+    }
+    
+}   // #96
