@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+// import Firebase
 import SDWebImage
 
 class HomeViewController: UIViewController {
@@ -123,16 +123,16 @@ class HomeViewController: UIViewController {
     
     @objc func handleLogout() {
         
-        do {
-            try Auth.auth().signOut()
-            print("----------------")
-        } catch let logoutError {
-            print(logoutError)
-        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signInVC, animated: true, completion: nil)
+        /// using AuthService class
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(signInVC, animated: true, completion: nil)
+        }, onError: {
+            (errorMessage) in
+            /// implement hud here
+            print(errorMessage)
+        })
         
     }
     

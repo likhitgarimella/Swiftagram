@@ -46,6 +46,7 @@ class UserApi {
         
     }
     
+    ///
     var CURRENT_USER: User? {
         if let currentUser = Auth.auth().currentUser {
             return currentUser
@@ -63,4 +64,4 @@ class UserApi {
         
     }
     
-}   // #60
+}   // #68
