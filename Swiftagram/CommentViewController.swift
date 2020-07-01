@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+// import Firebase
 import JGProgressHUD
 
 class CommentViewController: UIViewController {
@@ -173,7 +173,7 @@ class CommentViewController: UIViewController {
         // a unique id that is generated for every comment
         let newCommentId = commentsRef.childByAutoId().key
         let newCommentReference = commentsRef.child(newCommentId!)
-        guard let currentUser = Auth.auth().currentUser else {
+        guard let currentUser = Api.UserDet.CURRENT_USER else {
             return
         }
         // uid of a user
