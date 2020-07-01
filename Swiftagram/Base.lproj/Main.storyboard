@@ -599,19 +599,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9mL-fH-qFs">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="157" height="138"/>
                                     <size key="headerReferenceSize" width="50" height="200"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="YvN-S0-eoE">
-                                        <rect key="frame" x="0.0" y="200" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="200" width="138" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Bq-V5-pJF">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2l-J9-zKe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T2l-J9-zKe" firstAttribute="leading" secondItem="0Bq-V5-pJF" secondAttribute="leading" id="2P7-6U-aiR"/>
+                                                <constraint firstItem="T2l-J9-zKe" firstAttribute="top" secondItem="0Bq-V5-pJF" secondAttribute="top" id="YFm-fP-75R"/>
+                                                <constraint firstAttribute="bottom" secondItem="T2l-J9-zKe" secondAttribute="bottom" id="YZ3-xm-Eka"/>
+                                                <constraint firstAttribute="trailing" secondItem="T2l-J9-zKe" secondAttribute="trailing" id="h2m-41-VTw"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="138" height="138"/>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderProfileCollectionReusableView" id="wjb-Iz-RE3" customClass="HeaderProfileCollectionReusableView" customModule="Swiftagram" customModuleProvider="target">
