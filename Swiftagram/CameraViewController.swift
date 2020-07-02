@@ -120,40 +120,24 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else {
             return
         }
-        // NSUUID
-        let photoIdString = NSUUID().uuidString
-        print("Photo Id String: \(photoIdString)")
-        let storageRef = Storage.storage().reference(forURL: "gs://swiftagram-1234.appspot.com").child("posts").child(photoIdString)
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpg"
-        // put image data
-        storageRef.putData(imageData, metadata: metadata) { (storageMetaData, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-                // progress hud
-                self.hud1.show(in: self.view)
-                self.hud1.indicatorView = nil    // remove indicator
-                self.hud1.textLabel.text = error!.localizedDescription
-                self.hud1.dismiss(afterDelay: 2.0, animated: true)
-                return
-            }
-            // get download url for image from Firebase Storage
-            storageRef.downloadURL { (url, error) in
-                // convert that download url to string
-                if let metaImageUrl = url?.absoluteString {
-                    print(metaImageUrl)
-                    self.sendDataToDatabase(photoUrl: metaImageUrl)
-                }
-            }
-        }
+        HelperService.uploadDataToServer(data: imageData, caption: captionTextView.text!, onSuccess: {
+            self.clean()
+            self.tabBarController?.selectedIndex = 0
+        })
+    }
+    
+    func clean() {
+        self.photo.image = UIImage(named: "Placeholder-image")
+        // selected image should be blank again, after we push the post to db
+        self.selectedImage = nil
+        self.captionTextView.text = "Write a caption..."
+        // setting back text view text color to light gray, so that delegate methods work
+        self.captionTextView.textColor = UIColor.lightGray
     }
     
     @IBAction func remove(_ sender: UIBarButtonItem) {
         
-        self.photo.image = UIImage(named: "Placeholder-image")
-        self.selectedImage = nil
-        self.captionTextView.text = "Write a caption..."
-        self.captionTextView.textColor = UIColor.lightGray
+        clean()
         // we need to test for bad inputs again, after clearing the inputs
         handlePost()
         
@@ -161,6 +145,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     
     func sendDataToDatabase(photoUrl: String) {
         
+        /*
         let databaseRef = Database.database().reference().child("posts")
         /// creating an auto id for every new post...
         /// so we use childByAutoId instead of uid...
@@ -211,6 +196,9 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             // after post share is success, switch to home tab
             self.tabBarController?.selectedIndex = 0
         })
+        */
+        
+        
         
     }
     
@@ -230,4 +218,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #234
+}   // #222
