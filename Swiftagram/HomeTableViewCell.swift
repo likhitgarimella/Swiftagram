@@ -50,6 +50,7 @@ class HomeTableViewCell: UITableViewCell {
         
         setupUserInfo()
         
+        /// Unscalable way of liking posts.. old method..
         /*
         /// We need to make the cell/post aware be aware, that current user liked it..
         if let currentUser = Auth.auth().currentUser {
@@ -65,12 +66,13 @@ class HomeTableViewCell: UITableViewCell {
                 }
             })
         }
-        */  /// Unscalable way of liking posts.. old method..
+        */
         
         /// Update like
         updateLike(post: post!)
         
-        /// Update like count
+        /// Update like count -> Old
+        /*
         Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
             snapshot in
             print(snapshot)
@@ -78,6 +80,12 @@ class HomeTableViewCell: UITableViewCell {
                 self.likeCountButton.setTitle("\(value) likes", for: .normal)
             }
         })
+        */
+        
+        /// Update like count -> New
+        Api.Post.observeLikeCount(withPostId: post!.id!) { (post) in
+            self.likeCountButton.setTitle("\(value) likes", for: .normal)
+        }
         
         /// Smoothly update like, when scrolling view -> New
         Api.Post.observePost(withId: post!.id!, completion: { (post) in
@@ -272,4 +280,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #276
+}   // #284

@@ -42,4 +42,16 @@ class PostApi {
         
     }
     
-}   // #46
+    func observeLikeCount(withPostId id: String, completion: @escaping (Int) -> Void) {
+        
+        REF_POSTS.child(id).observe(.childChanged, with: {
+            snapshot in
+            print(snapshot)
+            if let value = snapshot.value as? Int {
+                completion(value)
+            }
+        })
+        
+    }
+    
+}   // #58
