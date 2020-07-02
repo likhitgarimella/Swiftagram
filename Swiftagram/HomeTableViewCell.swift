@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import Firebase
+// import Firebase
+
+/// If a View needs data, it should ask controllers...
 
 class HomeTableViewCell: UITableViewCell {
     
@@ -23,8 +25,6 @@ class HomeTableViewCell: UITableViewCell {
     
     // linking home VC & home table view cell
     var homeVC: HomeViewController?
-    
-    var postRef: DatabaseReference!
     
     var post: Post? {
         didSet {
@@ -79,6 +79,12 @@ class HomeTableViewCell: UITableViewCell {
             }
         })
         
+        /// Smoothly update like, when scrolling view -> New
+        Api.Post.observePost(withId: post!.id!, completion: { (post) in
+            self.updateLike(post: post)
+        })
+        
+        /*  // Old method
         /// Smoothly update like, when scrolling view
         Api.Post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value, with: {
             snapshot in
@@ -87,6 +93,7 @@ class HomeTableViewCell: UITableViewCell {
                 self.updateLike(post: post)
             }
         })
+        */
         
     }
     
@@ -265,4 +272,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #269
+}   // #276
