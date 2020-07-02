@@ -126,6 +126,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         })
     }
     
+    // Reset function
     func clean() {
         self.photo.image = UIImage(named: "Placeholder-image")
         // selected image should be blank again, after we push the post to db
@@ -140,65 +141,6 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         clean()
         // we need to test for bad inputs again, after clearing the inputs
         handlePost()
-        
-    }
-    
-    func sendDataToDatabase(photoUrl: String) {
-        
-        /*
-        let databaseRef = Database.database().reference().child("posts")
-        /// creating an auto id for every new post...
-        /// so we use childByAutoId instead of uid...
-        /// since 1 unique user may have many posts...
-        let newPostId = databaseRef.childByAutoId().key
-        let newPostReference = databaseRef.child(newPostId!)
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let currentUserId = currentUser.uid
-        // put that download url string in db
-        newPostReference.setValue(["uid": currentUserId, "photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: { (error, ref) in
-            if error != nil {
-                print(error!.localizedDescription)
-                // progress hud
-                self.hud1.show(in: self.view)
-                self.hud1.indicatorView = nil    // remove indicator
-                self.hud1.textLabel.text = error!.localizedDescription
-                self.hud1.dismiss(afterDelay: 2.0, animated: true)
-                return
-            }
-            
-            // reference for my posts
-            let myPostRef = Api.MyPosts.REF_MYPOSTS.child(currentUserId).child(newPostId!)
-            myPostRef.setValue(true, withCompletionBlock: {
-                (error, ref) in
-                if error != nil {
-                    print(error!.localizedDescription)
-                    // progress hud
-                    self.hud1.show(in: self.view)
-                    self.hud1.indicatorView = nil    // remove indicator
-                    self.hud1.textLabel.text = error!.localizedDescription
-                    self.hud1.dismiss(afterDelay: 2.0, animated: true)
-                    return
-                }
-            })
-            
-            self.hud1.show(in: self.view)
-            self.hud1.indicatorView = nil    // remove indicator
-            self.hud1.textLabel.text = "Success!"
-            self.photo.image = UIImage(named: "Placeholder-image")
-            // selected image should be blank again, after we push the post to db
-            self.selectedImage = nil
-            self.captionTextView.text = "Write a caption..."
-            // setting back text view text color to light gray, so that delegate methods work
-            self.captionTextView.textColor = UIColor.lightGray
-            self.hud1.dismiss(afterDelay: 2.0, animated: true)
-            // after post share is success, switch to home tab
-            self.tabBarController?.selectedIndex = 0
-        })
-        */
-        
-        
         
     }
     
@@ -218,4 +160,4 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-}   // #222
+}   // #164
