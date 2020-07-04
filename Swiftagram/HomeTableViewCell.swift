@@ -215,11 +215,17 @@ class HomeTableViewCell: UITableViewCell {
         */  /// Unscalable way of liking posts.. old method..
         
         postRef = Api.Post.REF_POSTS.child(post!.id!)
-        incrementLikes(forRef: postRef)
+        // incrementLikes(forRef: postRef)
+        Api.Post.incrementLikes(forRef: postRef, onSuccess: { (post) in
+            self.updateLike(post: post)
+        }) { (errorMessage) in
+            print(errorMessage)
+        }
         
     }
     
-    func incrementLikes(forRef ref: DatabaseReference) {
+    /// Old incrementLikes method
+    /*  func incrementLikes(forRef ref: DatabaseReference) {
         
         ref.runTransactionBlock ({ (currentData: MutableData) -> TransactionResult in
             if var post = currentData.value as? [String: AnyObject], let uid = Auth.auth().currentUser?.uid {
@@ -254,7 +260,7 @@ class HomeTableViewCell: UITableViewCell {
             
         }
         
-    }
+    }   */
     
     @objc func commentImageViewTouch() {
         
@@ -280,4 +286,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #284
+}   // #290
