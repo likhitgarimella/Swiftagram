@@ -771,7 +771,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vig-ru-zwV"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="uin-Zs-3bZ"/>
+                    <navigationItem key="navigationItem" title="Profile" id="uin-Zs-3bZ">
+                        <barButtonItem key="leftBarButtonItem" image="discover" id="oC9-uN-xif">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Ppd-bY-FxJ" kind="show" id="PiE-D1-Xxo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileCollectionView" destination="UGq-SR-8yY" id="aqr-7c-IaA"/>
                     </connections>
@@ -779,6 +786,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hB-Y5-6Gn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2089.8550724637685" y="919.56521739130437"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="L8m-Df-SeC">
+            <objects>
+                <viewController id="Ppd-bY-FxJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dLI-nw-fvP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUW-XP-jqj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yUW-XP-jqj" firstAttribute="trailing" secondItem="w3s-Qx-y1g" secondAttribute="trailing" id="JY8-kN-dnA"/>
+                            <constraint firstAttribute="bottom" secondItem="yUW-XP-jqj" secondAttribute="bottom" id="MI0-PA-QDt"/>
+                            <constraint firstItem="yUW-XP-jqj" firstAttribute="top" secondItem="dLI-nw-fvP" secondAttribute="top" id="SU1-B0-lQk"/>
+                            <constraint firstItem="yUW-XP-jqj" firstAttribute="leading" secondItem="w3s-Qx-y1g" secondAttribute="leading" id="TMC-RH-T6B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w3s-Qx-y1g"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4YZ-Mh-ZeU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2r-xU-Ira" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2824.6376811594205" y="919.56521739130437"/>
         </scene>
         <!--Camera-->
         <scene sceneID="0dA-U9-Nb9">
@@ -876,7 +911,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNT-m6-9Zb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4017" y="920"/>
+            <point key="canvasLocation" x="4768" y="920"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hiB-ea-KX6">
@@ -952,7 +987,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJK-iV-Ghy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3284" y="920"/>
+            <point key="canvasLocation" x="4016" y="920"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SeN-IY-NYX">
@@ -991,6 +1026,7 @@
         <image name="Search" width="24" height="25"/>
         <image name="SearchSel" width="25" height="26"/>
         <image name="comment" width="20" height="21"/>
+        <image name="discover" width="22" height="22"/>
         <image name="like" width="23" height="19"/>
         <image name="share" width="28" height="21"/>
     </resources>
