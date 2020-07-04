@@ -83,7 +83,7 @@ class HomeTableViewCell: UITableViewCell {
         */
         
         /// Update like count -> New
-        Api.Post.observeLikeCount(withPostId: post!.id!) { (post) in
+        Api.Post.observeLikeCount(withPostId: post!.id!) { (value) in
             self.likeCountButton.setTitle("\(value) likes", for: .normal)
         }
         
