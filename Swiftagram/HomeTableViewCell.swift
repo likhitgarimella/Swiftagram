@@ -214,15 +214,17 @@ class HomeTableViewCell: UITableViewCell {
         }
         */  /// Unscalable way of liking posts.. old method..
         
-        postRef = Api.Post.REF_POSTS.child(post!.id!)
+        // postRef = Api.Post.REF_POSTS.child(post!.id!)
         // incrementLikes(forRef: postRef)
-        Api.Post.incrementLikes(forRef: postRef, onSuccess: { (post) in
+        
+        Api.Post.incrementLikes(postId: post!.id!, onSuccess: { (post) in
             self.updateLike(post: post)
         }) { (errorMessage) in
             print(errorMessage)
         }
         
     }
+    
     
     /// Old incrementLikes method
     /*  func incrementLikes(forRef ref: DatabaseReference) {
@@ -286,4 +288,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #290
+}   // #292

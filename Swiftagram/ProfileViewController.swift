@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
             print(snapshot)
             Api.Post.observePost(withId: snapshot.key, completion: {
                 post in
-                print(post.id)
+                // print(post.id)
                 self.posts.append(post)
                 self.profileCollectionView.reloadData()
             })

@@ -54,9 +54,10 @@ class PostApi {
         
     }
     
-    func incrementLikes(forRef ref: DatabaseReference, onSuccess: @escaping (Post) -> Void, onError: @escaping (_ errorMessage: String?) -> Void ) {
+    func incrementLikes(postId: String, onSuccess: @escaping (Post) -> Void, onError: @escaping (_ errorMessage: String?) -> Void ) {
         
-        ref.runTransactionBlock ({ (currentData: MutableData) -> TransactionResult in
+        let postRef = Api.Post.REF_POSTS.child(postId)
+        postRef.runTransactionBlock ({ (currentData: MutableData) -> TransactionResult in
             if var post = currentData.value as? [String: AnyObject], let uid = Api.UserDet.CURRENT_USER?.uid {
                 // print("Value 1: \(currentData.value)")
                 var likes: Dictionary<String, Bool>
@@ -91,4 +92,4 @@ class PostApi {
         
     }
     
-}   // #95
+}   // #96
