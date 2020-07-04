@@ -92,11 +92,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02BFF36B24B014B4006CC5B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */,
+				02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */,
+				0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */,
+				02998CC924AC28BC004ED0AC /* PhotoCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02BFF36C24B014CB006CC5B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02A0736A247FC3DE008C5D46 /* AppUser.swift */,
+				02DCEEF5247E490500AF1876 /* Post.swift */,
+				024A05542483B50200CC06CB /* Comment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02BFF36D24B014D6006CC5B7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				02F94D8D247A649000887DAD /* SignInViewController.swift */,
+				02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */,
+				02F94DA4247AAF5300887DAD /* HomeViewController.swift */,
+				02DC18D72482ACAD00CBC10C /* CommentViewController.swift */,
+				02F94DA6247AAF6300887DAD /* DiscoverViewController.swift */,
+				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
+				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
+				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		02F94D7D247A649000887DAD = {
 			isa = PBXGroup;
 			children = (
 				02F94DA1247A799100887DAD /* Fonts */,
 				02F94D88247A649000887DAD /* Swiftagram */,
+				02BFF36B24B014B4006CC5B7 /* Views */,
+				02BFF36C24B014CB006CC5B7 /* Model */,
+				02BFF36D24B014D6006CC5B7 /* ViewControllers */,
 				02F94D87247A649000887DAD /* Products */,
 				643B9B919EA17175FA341B1D /* Pods */,
 				6E5009447A5078BB4B97CC91 /* Frameworks */,
@@ -119,28 +158,13 @@
 				02F94D94247A649400887DAD /* LaunchScreen.storyboard */,
 				02F94D8F247A649000887DAD /* Main.storyboard */,
 				02B5133F247C911600FD2087 /* AuthService.swift */,
-				02F94D8D247A649000887DAD /* SignInViewController.swift */,
-				02F94DA2247A8B4D00887DAD /* SignUpViewController.swift */,
+				02998CCB24AC835D004ED0AC /* HelperService.swift */,
 				02D6B931249AA0170008B503 /* Api.swift */,
 				02D6B92F249A8BFB0008B503 /* UserApi.swift */,
 				02D6B92D2499927E0008B503 /* PostApi.swift */,
 				02D6B933249AA37D0008B503 /* CommentApi.swift */,
 				02D6B935249ABA2C0008B503 /* PostCommentApi.swift */,
 				02AB7CCC24A2E68000610431 /* MyPostsApi.swift */,
-				02A0736A247FC3DE008C5D46 /* AppUser.swift */,
-				02DCEEF5247E490500AF1876 /* Post.swift */,
-				024A05542483B50200CC06CB /* Comment.swift */,
-				02F94DA4247AAF5300887DAD /* HomeViewController.swift */,
-				02A07368247F7B2F008C5D46 /* HomeTableViewCell.swift */,
-				02DC18D72482ACAD00CBC10C /* CommentViewController.swift */,
-				02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */,
-				02F94DA6247AAF6300887DAD /* DiscoverViewController.swift */,
-				02998CCB24AC835D004ED0AC /* HelperService.swift */,
-				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
-				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
-				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
-				0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */,
-				02998CC924AC28BC004ED0AC /* PhotoCollectionViewCell.swift */,
 				02F94D9D247A780400887DAD /* Extensions.swift */,
 				02F94D92247A649400887DAD /* Assets.xcassets */,
 				02F94D97247A649400887DAD /* Info.plist */,
