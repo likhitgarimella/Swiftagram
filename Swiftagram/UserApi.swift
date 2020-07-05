@@ -46,6 +46,20 @@ class UserApi {
         
     }
     
+    func observeUsers(completion: @escaping (AppUser) -> Void) {
+        
+        REF_USERS.observe(.childAdded, with: {
+            snapshot in
+            
+            if let dict = snapshot.value as? [String:Any] {
+                let user = AppUser.transformUser(dict: dict)
+                completion(user)
+            }
+            
+        })
+        
+    }
+    
     ///
     var CURRENT_USER: User? {
         if let currentUser = Auth.auth().currentUser {
@@ -64,4 +78,4 @@ class UserApi {
         
     }
     
-}   // #68
+}   // #82
