@@ -14,18 +14,22 @@ class AppUser {
     var profileImageUrlString: String?
     var usernameString: String?
     
+    var id: String?
+    
 }
 
 extension AppUser {
     
-    static func transformUser(dict: [String: Any]) -> AppUser {
+    static func transformUser(dict: [String: Any], key: String) -> AppUser {
         
         let user = AppUser()
         user.emailString = dict["email"] as? String
         user.profileImageUrlString = dict["profileImgUrl"] as? String
         user.usernameString = dict["name"] as? String
+        
+        user.id = key
         return user
         
     }
     
-}   // #32
+}   // #36
