@@ -13,8 +13,15 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        loadUsers()
+        
+    }
+    
+    func loadUsers() {
+        
         
         
     }
     
-}   // #21
+}   // #28

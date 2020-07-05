@@ -9,7 +9,12 @@
 import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
-
+    
+    // Outlets
+    @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var followButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

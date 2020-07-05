@@ -799,7 +799,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="nnf-nM-rfD" customClass="PeopleTableViewCell" customModule="Swiftagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleTableViewCell" rowHeight="100" id="nnf-nM-rfD" customClass="PeopleTableViewCell" customModule="Swiftagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nnf-nM-rfD" id="z4k-uG-FXJ">
@@ -843,8 +843,17 @@
                                                 <constraint firstItem="cip-Nc-x6v" firstAttribute="leading" secondItem="cH7-cw-3cw" secondAttribute="trailing" constant="12" id="xCj-mJ-xxf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="qfh-b4-zWW" id="3r0-Hb-Qhu"/>
+                                            <outlet property="nameLabel" destination="cip-Nc-x6v" id="ouS-rg-Tme"/>
+                                            <outlet property="profileImage" destination="cH7-cw-3cw" id="0PA-J0-3V6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ppd-bY-FxJ" id="dDn-dw-5jA"/>
+                                    <outlet property="delegate" destination="Ppd-bY-FxJ" id="Bvm-pP-NJv"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
