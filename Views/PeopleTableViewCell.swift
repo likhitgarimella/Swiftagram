@@ -15,6 +15,22 @@ class PeopleTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var followButton: UIButton!
     
+    var user: AppUser? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
+        
+        nameLabel.text = user?.usernameString
+        if let photoUrlString = user?.profileImageUrlString {
+            let photoUrl = URL(string: photoUrlString)
+            profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
+        }
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,4 +45,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #28
+}   // #49

@@ -43,7 +43,11 @@ extension PeopleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
         cell.backgroundColor = UIColor.white
+        
+        let user = users[indexPath.row]
+        cell.user = user
+        
         return cell
     }
     
-}   // #50
+}   // #54
