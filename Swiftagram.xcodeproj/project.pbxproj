@@ -16,6 +16,8 @@
 		02AB7CCD24A2E68000610431 /* MyPostsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB7CCC24A2E68000610431 /* MyPostsApi.swift */; };
 		02B5133E247B3BB000FD2087 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */; };
 		02B51340247C911600FD2087 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5133F247C911600FD2087 /* AuthService.swift */; };
+		02BA25E924B198BA00F42C86 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA25E824B198BA00F42C86 /* PeopleViewController.swift */; };
+		02BA25EB24B198F500F42C86 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA25EA24B198F500F42C86 /* PeopleTableViewCell.swift */; };
 		02D6B92E2499927E0008B503 /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B92D2499927E0008B503 /* PostApi.swift */; };
 		02D6B930249A8BFC0008B503 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B92F249A8BFB0008B503 /* UserApi.swift */; };
 		02D6B932249AA0170008B503 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6B931249AA0170008B503 /* Api.swift */; };
@@ -51,6 +53,8 @@
 		02AB7CCC24A2E68000610431 /* MyPostsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsApi.swift; sourceTree = "<group>"; };
 		02B5133D247B3BB000FD2087 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02B5133F247C911600FD2087 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		02BA25E824B198BA00F42C86 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		02BA25EA24B198F500F42C86 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
 		02D6B92D2499927E0008B503 /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 		02D6B92F249A8BFB0008B503 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		02D6B931249AA0170008B503 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */,
 				0270AF1F24A02BF100C29B1A /* HeaderProfileCollectionReusableView.swift */,
 				02998CC924AC28BC004ED0AC /* PhotoCollectionViewCell.swift */,
+				02BA25EA24B198F500F42C86 /* PeopleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
 				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
 				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
+				02BA25E824B198BA00F42C86 /* PeopleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -336,9 +342,11 @@
 				02DC18DA2482ACDD00CBC10C /* CommentTableViewCell.swift in Sources */,
 				02F94D9E247A780400887DAD /* Extensions.swift in Sources */,
 				02998CCC24AC835D004ED0AC /* HelperService.swift in Sources */,
+				02BA25EB24B198F500F42C86 /* PeopleTableViewCell.swift in Sources */,
 				02F94DA9247AAF6F00887DAD /* CameraViewController.swift in Sources */,
 				02F94DA3247A8B4D00887DAD /* SignUpViewController.swift in Sources */,
 				02D6B92E2499927E0008B503 /* PostApi.swift in Sources */,
+				02BA25E924B198BA00F42C86 /* PeopleViewController.swift in Sources */,
 				02F94DA5247AAF5300887DAD /* HomeViewController.swift in Sources */,
 				02D6B932249AA0170008B503 /* Api.swift in Sources */,
 				02D6B930249A8BFC0008B503 /* UserApi.swift in Sources */,
