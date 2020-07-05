@@ -36,13 +36,15 @@ class PeopleTableViewCell: UITableViewCell {
     
     @objc func followAction() {
         
-        
+        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.UserDet.CURRENT_USER!.uid).setValue(true)
+        Api.Follow.REF_FOLLOWING.child(Api.UserDet.CURRENT_USER!.uid).child(user!.id!).setValue(true)
         
     }
     
     @objc func unFollowAction() {
         
-        
+        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.UserDet.CURRENT_USER!.uid).setValue(NSNull())
+        Api.Follow.REF_FOLLOWING.child(Api.UserDet.CURRENT_USER!.uid).child(user!.id!).setValue(NSNull())
         
     }
     
@@ -60,4 +62,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #64
+}   // #66
