@@ -9,6 +9,10 @@
 import UIKit
 
 class PeopleViewController: UIViewController {
+    
+    @IBOutlet weak var peopleTableView: UITableView!
+    
+    var users: [AppUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +24,11 @@ class PeopleViewController: UIViewController {
     
     func loadUsers() {
         
-        
+        Api.UserDet.observeUsers { (user) in
+            self.users.append(user)
+            self.peopleTableView.reloadData()
+        }
         
     }
     
-}   // #28
+}   // #35
