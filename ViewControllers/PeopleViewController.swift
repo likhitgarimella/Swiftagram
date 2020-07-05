@@ -19,6 +19,7 @@ class PeopleViewController: UIViewController {
         
         hideKeyboardWhenTappedAround()
         loadUsers()
+        peopleTableView.backgroundColor = UIColor.white
         
     }
     
@@ -31,4 +32,18 @@ class PeopleViewController: UIViewController {
         
     }
     
-}   // #35
+}
+
+extension PeopleViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
+        cell.backgroundColor = UIColor.white
+        return cell
+    }
+    
+}   // #50
