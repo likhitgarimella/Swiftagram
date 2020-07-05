@@ -29,6 +29,21 @@ class PeopleTableViewCell: UITableViewCell {
             profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
         }
         
+        followButton.addTarget(self, action: #selector(self.followAction), for: .touchUpInside)
+        followButton.addTarget(self, action: #selector(self.unFollowAction), for: .touchUpInside)
+        
+    }
+    
+    @objc func followAction() {
+        
+        
+        
+    }
+    
+    @objc func unFollowAction() {
+        
+        
+        
     }
     
     override func awakeFromNib() {
@@ -45,4 +60,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #49
+}   // #64
