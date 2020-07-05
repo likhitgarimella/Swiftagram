@@ -34,6 +34,7 @@ class ProfileViewController: UIViewController {
         /// observeCurrentUser
         Api.UserDet.observeCurrentUser { (user) in
             self.user = user
+            self.title = user.usernameString
             self.profileCollectionView.reloadData()
         }
         
@@ -104,4 +105,4 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.size.width / 3 - 1, height: collectionView.frame.size.width / 3 - 1)
     }
     
-}   // #108
+}   // #109
