@@ -71,6 +71,10 @@ class HomeTableViewCell: UITableViewCell {
         /// Update like
         updateLike(post: post!)
         
+        /// New #1
+        self.updateLike(post: self.post!)
+        
+        
         /// Update like count -> Old
         /*
         Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
@@ -82,15 +86,19 @@ class HomeTableViewCell: UITableViewCell {
         })
         */
         
-        /// Update like count -> New
+        /// Update like count -> Mid
+        /*
         Api.Post.observeLikeCount(withPostId: post!.id!) { (value) in
             self.likeCountButton.setTitle("\(value) likes", for: .normal)
         }
+        */
         
-        /// Smoothly update like, when scrolling view -> New
+        /// Smoothly update like, when scrolling view -> Mid
+        /*
         Api.Post.observePost(withId: post!.id!, completion: { (post) in
             self.updateLike(post: post)
         })
+        */
         
         /*  // Old method
         /// Smoothly update like, when scrolling view
@@ -219,7 +227,13 @@ class HomeTableViewCell: UITableViewCell {
         
         Api.Post.incrementLikes(postId: post!.id!, onSuccess: { (post) in
             self.updateLike(post: post)
+            /// New #2
+            /// Now the post property of the cell is updated right after a like/dislike
+            self.post?.likes = post.likes
+            self.post?.isLiked = post.isLiked
+            self.post?.likeCount = post.likeCount
         }) { (errorMessage) in
+            // hud
             print(errorMessage)
         }
         
@@ -288,4 +302,4 @@ class HomeTableViewCell: UITableViewCell {
         
     }
 
-}   // #292
+}   // #306
