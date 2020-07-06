@@ -29,7 +29,26 @@ class PeopleTableViewCell: UITableViewCell {
             profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
         }
         
-        // followButton.addTarget(self, action: #selector(self.followAction), for: .touchUpInside)
+        if user!.isFollowing! {
+            /// user already following, so on tapping should unfollow
+            configureUnFollowButton()
+        } else {
+            /// user not following, so on tapping should follow
+            configureFollowButton()
+        }
+        
+    }
+    
+    func configureFollowButton() {
+        
+        followButton.setTitle("Follow", for: .normal)
+        followButton.addTarget(self, action: #selector(self.followAction), for: .touchUpInside)
+        
+    }
+    
+    func configureUnFollowButton() {
+        
+        followButton.setTitle("Following", for: .normal)
         followButton.addTarget(self, action: #selector(self.unFollowAction), for: .touchUpInside)
         
     }
@@ -37,14 +56,17 @@ class PeopleTableViewCell: UITableViewCell {
     @objc func followAction() {
         
         Api.Follow.followAction(withUser: user!.id!)
+        configureUnFollowButton()
         
     }
     
     @objc func unFollowAction() {
         
         Api.Follow.unFollowAction(withUser: user!.id!)
+        configureFollowButton()
         
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,4 +82,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #64
+}   // #86

@@ -16,7 +16,7 @@ class AppUser {
     
     var id: String?
     
-    var isFollowing: String?
+    var isFollowing: Bool?
     
 }
 
