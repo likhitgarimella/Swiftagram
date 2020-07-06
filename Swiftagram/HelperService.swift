@@ -48,6 +48,9 @@ class HelperService {
                 print(error!.localizedDescription)
                 return
             }
+            
+            Database.database().reference().child("feed").child(Api.UserDet.CURRENT_USER!.uid).child(newPostId!).setValue(true)
+            
             // reference for my posts
             let myPostRef = Api.MyPosts.REF_MYPOSTS.child(currentUserId).child(newPostId!)
             myPostRef.setValue(true, withCompletionBlock: {
@@ -61,4 +64,4 @@ class HelperService {
         })
     }
     
-}   // #65
+}   // #68
