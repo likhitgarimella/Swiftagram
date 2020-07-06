@@ -26,9 +26,19 @@ class PeopleViewController: UIViewController {
     func loadUsers() {
         
         Api.UserDet.observeUsers { (user) in
-            self.users.append(user)
-            self.peopleTableView.reloadData()
+            self.isFollowing(userId: user.id!, completed: {
+                (value) in
+                user.isFollowing = value
+                self.users.append(user)
+                self.peopleTableView.reloadData()
+            })
         }
+        
+    }
+    
+    func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
+        
+        Api.Follow.isFollowing(userId: userId, completed: completed)
         
     }
     
@@ -50,4 +60,4 @@ extension PeopleViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #54
+}   // #64
