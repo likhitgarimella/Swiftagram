@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Firebase
+// import FirebaseDatabase
+import FirebaseStorage
 
 class HelperService {
     
@@ -49,7 +50,8 @@ class HelperService {
                 return
             }
             
-            Database.database().reference().child("feed").child(Api.UserDet.CURRENT_USER!.uid).child(newPostId!).setValue(true)
+            Api.Feed.REF_FEED.child(Api.UserDet.CURRENT_USER!.uid).child(newPostId!).setValue(true)
+            // Database.database().reference().child("feed").child(Api.UserDet.CURRENT_USER!.uid).child(newPostId!).setValue(true)
             
             // reference for my posts
             let myPostRef = Api.MyPosts.REF_MYPOSTS.child(currentUserId).child(newPostId!)
@@ -64,4 +66,4 @@ class HelperService {
         })
     }
     
-}   // #68
+}   // #70
