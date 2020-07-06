@@ -41,6 +41,12 @@ class PeopleTableViewCell: UITableViewCell {
     
     func configureFollowButton() {
         
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232/255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
+        followButton.setTitleColor(UIColor.white, for: .normal)
+        followButton.backgroundColor = UIColor(red: 69/255, green: 142/255, blue: 255/255, alpha: 1)
         followButton.setTitle("Follow", for: .normal)
         followButton.addTarget(self, action: #selector(self.followAction), for: .touchUpInside)
         
@@ -82,4 +88,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #86
+}   // #92
