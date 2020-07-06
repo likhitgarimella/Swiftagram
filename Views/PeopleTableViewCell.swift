@@ -29,13 +29,24 @@ class PeopleTableViewCell: UITableViewCell {
             profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
         }
         
-        if user!.isFollowing! {
+        /// Smoothly update follow and following, when scrolling view -> New
+        Api.Follow.isFollowing(userId: user!.id!) { (value) in
+            if value {
+                /// user already following, so on tapping should unfollow
+                self.configureUnFollowButton()
+            } else {
+                /// user not following, so on tapping should follow
+                self.configureFollowButton()
+            }
+        }
+        
+        /* if user!.isFollowing! {
             /// user already following, so on tapping should unfollow
             configureUnFollowButton()
         } else {
             /// user not following, so on tapping should follow
             configureFollowButton()
-        }
+        } */
         
     }
     
@@ -79,7 +90,6 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -94,4 +104,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #98
+}   // #108
