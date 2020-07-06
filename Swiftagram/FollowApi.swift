@@ -24,4 +24,18 @@ class FollowApi {
         REF_FOLLOWING.child(Api.UserDet.CURRENT_USER!.uid).child(id).setValue(NSNull())
     }
     
-}   // #28
+    
+    func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
+        REF_FOLLOWERS.child(userId).child(Api.UserDet.CURRENT_USER!.uid).observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let _ = snapshot.value as? NSNull {
+                /// if this value is null, then the current user is not in the follower list of this user
+                completed(false)
+            } else {
+                /// otherwise, the current user is in the follower list of this user
+                completed(true)
+            }
+        })
+    }
+    
+}   // #42

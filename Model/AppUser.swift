@@ -16,6 +16,8 @@ class AppUser {
     
     var id: String?
     
+    var isFollowing: String?
+    
 }
 
 extension AppUser {
@@ -32,4 +34,4 @@ extension AppUser {
         
     }
     
-}   // #36
+}   // #38
