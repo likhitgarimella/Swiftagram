@@ -29,8 +29,8 @@ class PeopleTableViewCell: UITableViewCell {
             profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "Placeholder-image"))
         }
         
-        /// Smoothly update follow and following, when scrolling view -> New
-        Api.Follow.isFollowing(userId: user!.id!) { (value) in
+        /// Smoothly update follow and following, when scrolling view -> Old
+        /* Api.Follow.isFollowing(userId: user!.id!) { (value) in
             if value {
                 /// user already following, so on tapping should unfollow
                 self.configureUnFollowButton()
@@ -38,15 +38,17 @@ class PeopleTableViewCell: UITableViewCell {
                 /// user not following, so on tapping should follow
                 self.configureFollowButton()
             }
-        }
+        } */
         
-        /* if user!.isFollowing! {
+        
+        /// Smoothly update follow and following, when scrolling view -> New #1
+        if user!.isFollowing! {
             /// user already following, so on tapping should unfollow
             configureUnFollowButton()
         } else {
             /// user not following, so on tapping should follow
             configureFollowButton()
-        } */
+        }
         
     }
     
@@ -76,17 +78,25 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
     
+    /// Smoothly update follow and following, when scrolling view -> New #2
     @objc func followAction() {
         
-        Api.Follow.followAction(withUser: user!.id!)
-        configureUnFollowButton()
+        if user!.isFollowing! == false {
+            Api.Follow.followAction(withUser: user!.id!)
+            configureUnFollowButton()
+            user!.isFollowing! = true
+        }
         
     }
     
+    /// Smoothly update follow and following, when scrolling view -> New #3
     @objc func unFollowAction() {
         
-        Api.Follow.unFollowAction(withUser: user!.id!)
-        configureFollowButton()
+        if user!.isFollowing! == true {
+            Api.Follow.unFollowAction(withUser: user!.id!)
+            configureFollowButton()
+            user!.isFollowing! = false
+        }
         
     }
     
@@ -104,4 +114,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #108
+}   // #118
