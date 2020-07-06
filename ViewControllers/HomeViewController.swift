@@ -49,6 +49,9 @@ class HomeViewController: UIViewController {
     
     func loadPosts() {
         
+        // start when loadPosts func starts
+        activityIndicatorView.startAnimating()
+        
         Api.Feed.observeFeed(withId: Api.UserDet.CURRENT_USER!.uid, completion: {
             (post) in
             guard let postId = post.uid else {
@@ -57,6 +60,9 @@ class HomeViewController: UIViewController {
             self.fetchUser(uid: postId, completed: {
                 self.posts.append(post)
                 // print(self.posts)
+                // stop before tablew view reloads data
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorView.hidesWhenStopped = true
                 self.tableView.reloadData()
             })
         })
@@ -196,4 +202,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #200
+}   // #206
