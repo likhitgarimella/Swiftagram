@@ -20,4 +20,6 @@ struct Api {
     
     static var Follow = FollowApi()
     
-}   // #24
+    static var Feed = FeedApi()
+    
+}   // #26
