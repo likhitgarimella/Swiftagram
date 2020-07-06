@@ -61,6 +61,18 @@ class HomeViewController: UIViewController {
             })
         })
         
+        /// Remove feed posts (on unfollow)
+        Api.Feed.observeFeedRemoved(withId: Api.UserDet.CURRENT_USER!.uid, completion: {
+            (key) in
+            print(key)
+            for (index, post) in self.posts.enumerated() {
+                if post.id == key {
+                    self.posts.remove(at: index)
+                }
+            }
+            self.tableView.reloadData()
+        })
+        
         /// #2
         /*
         // start when loadPosts func starts
@@ -182,4 +194,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #186
+}   // #198
