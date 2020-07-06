@@ -54,6 +54,12 @@ class PeopleTableViewCell: UITableViewCell {
     
     func configureUnFollowButton() {
         
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232/255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
+        followButton.setTitleColor(UIColor.black, for: .normal)
+        followButton.backgroundColor = UIColor.clear
         followButton.setTitle("Following", for: .normal)
         followButton.addTarget(self, action: #selector(self.unFollowAction), for: .touchUpInside)
         
@@ -88,4 +94,4 @@ class PeopleTableViewCell: UITableViewCell {
         
     }
 
-}   // #92
+}   // #98
