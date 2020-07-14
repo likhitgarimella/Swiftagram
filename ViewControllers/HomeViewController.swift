@@ -78,6 +78,7 @@ class HomeViewController: UIViewController {
             } */
             /// this filter is more efficient, and same as above for loop
             self.posts = self.posts.filter { $0.id != key }
+            self.users = self.users.filter { $0.id != post.uid }
             self.tableView.reloadData()
         })
         
