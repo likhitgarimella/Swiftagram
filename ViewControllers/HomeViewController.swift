@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         
         /// Remove feed posts (on unfollow)
         Api.Feed.observeFeedRemoved(withId: Api.UserDet.CURRENT_USER!.uid, completion: {
-            (key) in
+            (post) in
             // print(key)
             /* for (index, post) in self.posts.enumerated() {
                 if post.id == key {
@@ -77,7 +77,8 @@ class HomeViewController: UIViewController {
                 }
             } */
             /// this filter is more efficient, and same as above for loop
-            self.posts = self.posts.filter { $0.id != key }
+            self.posts = self.posts.filter { $0.id != post.id }
+            /// real time query for posts and users count on follow and unfollow
             self.users = self.users.filter { $0.id != post.uid }
             self.tableView.reloadData()
         })
@@ -203,4 +204,4 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #206
+}   // #208
