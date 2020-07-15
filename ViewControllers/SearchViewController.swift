@@ -15,6 +15,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
+        
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Search"
         searchBar.frame.size.width = view.frame.size.width - 60
@@ -24,4 +26,16 @@ class SearchViewController: UIViewController {
         
     }
 
-}   // #28
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(searchBar.text)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchBar.text)
+    }
+    
+}   // #42
