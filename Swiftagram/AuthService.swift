@@ -81,9 +81,10 @@ class AuthService {
         
         let databaseRef = Database.database().reference().child("users").child(uid)
         // put that download url string in db
-        databaseRef.setValue(["name": username, "email": email, "profileImgUrl": profileImageUrl])
+        /// adding username lowercase, for search functionality purposes only
+        databaseRef.setValue(["username": username, "username_lowercase": username.lowercased(), "email": email, "profileImgUrl": profileImageUrl])
         onSuccess()
         
     }
     
-}   // #90
+}   // #91
