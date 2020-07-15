@@ -9,12 +9,19 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    var searchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "Search"
+        searchBar.frame.size.width = view.frame.size.width - 60
         
+        let searchItem = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.rightBarButtonItem = searchItem
         
     }
 
-}   // #21
+}   // #28
