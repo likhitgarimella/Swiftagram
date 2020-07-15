@@ -28,6 +28,7 @@
 		02DC18D82482ACAD00CBC10C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC18D72482ACAD00CBC10C /* CommentViewController.swift */; };
 		02DC18DA2482ACDD00CBC10C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */; };
 		02DCEEF6247E490500AF1876 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DCEEF5247E490500AF1876 /* Post.swift */; };
+		02ED94B924BF7F7C00730A4E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED94B824BF7F7A00730A4E /* SearchViewController.swift */; };
 		02F94D8A247A649000887DAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D89247A649000887DAD /* AppDelegate.swift */; };
 		02F94D8C247A649000887DAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D8B247A649000887DAD /* SceneDelegate.swift */; };
 		02F94D8E247A649000887DAD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F94D8D247A649000887DAD /* SignInViewController.swift */; };
@@ -67,6 +68,7 @@
 		02DC18D72482ACAD00CBC10C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		02DC18D92482ACDD00CBC10C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		02DCEEF5247E490500AF1876 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		02ED94B824BF7F7A00730A4E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		02F94D86247A649000887DAD /* Swiftagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F94D89247A649000887DAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02F94D8B247A649000887DAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				02F94DA4247AAF5300887DAD /* HomeViewController.swift */,
 				02DC18D72482ACAD00CBC10C /* CommentViewController.swift */,
 				02F94DA6247AAF6300887DAD /* DiscoverViewController.swift */,
+				02ED94B824BF7F7A00730A4E /* SearchViewController.swift */,
 				02F94DA8247AAF6F00887DAD /* CameraViewController.swift */,
 				02F94DAA247AAF7A00887DAD /* ActivityViewController.swift */,
 				02F94DAC247AAF8400887DAD /* ProfileViewController.swift */,
@@ -335,6 +338,7 @@
 				02F94DAD247AAF8400887DAD /* ProfileViewController.swift in Sources */,
 				02DCEEF6247E490500AF1876 /* Post.swift in Sources */,
 				02998CCA24AC28BC004ED0AC /* PhotoCollectionViewCell.swift in Sources */,
+				02ED94B924BF7F7C00730A4E /* SearchViewController.swift in Sources */,
 				024A05552483B50200CC06CB /* Comment.swift in Sources */,
 				023C1EB124B371C20001B65E /* FeedApi.swift in Sources */,
 				02D6B934249AA37D0008B503 /* CommentApi.swift in Sources */,
