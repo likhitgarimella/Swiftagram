@@ -53,7 +53,11 @@ class UserApi {
             
             if let dict = snapshot.value as? [String:Any] {
                 let user = AppUser.transformUser(dict: dict, key: snapshot.key)
-                completion(user)
+                
+                /// Display list of users in 'Discover users' exclusing the current user in that
+                if user.id! !=  Api.UserDet.CURRENT_USER?.uid {
+                    completion(user)
+                }
             }
             
         })
@@ -78,4 +82,4 @@ class UserApi {
         
     }
     
-}   // #82
+}   // #86
