@@ -11,6 +11,8 @@ import UIKit
 class SearchViewController: UIViewController {
     
     var searchBar = UISearchBar()
+    
+    var users: [AppUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,18 @@ class SearchViewController: UIViewController {
     func doSearch() {
         if let searchText = searchBar.text {
             Api.UserDet.queryUsers(withText: searchText) { (user) in
-                
+                self.isFollowing(userId: user.id!, completed: {
+                    (value) in
+                    user.isFollowing = value
+                    self.users.append(user)
+                    self.peopleTableView.reloadData()
+                })
             }
         }
+    }
+    
+    func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
+        Api.Follow.isFollowing(userId: userId, completed: completed)
     }
 
 }
@@ -46,4 +57,4 @@ extension SearchViewController: UISearchBarDelegate {
         print(searchBar.text)
     }
     
-}   // #50
+}   // #61
