@@ -37,6 +37,7 @@ class UserApi {
         
         REF_USERS.child(currentUser.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
+            /// tranform data snapshot to user object
             if let dict = snapshot.value as? [String:Any] {
                 let user = AppUser.transformUser(dict: dict, key: snapshot.key)
                 completion(user)
@@ -64,6 +65,19 @@ class UserApi {
         
     }
     
+    /// This will be the search text that we get from users
+    func queryUsers(withText text: String, completion: @escaping (AppUser) -> Void) {
+        
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            /// tranform data snapshot to user object
+            
+            
+        })
+        
+    }
+    
     ///
     var CURRENT_USER: User? {
         if let currentUser = Auth.auth().currentUser {
@@ -82,4 +96,4 @@ class UserApi {
         
     }
     
-}   // #86
+}   // #100
