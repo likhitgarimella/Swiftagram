@@ -656,6 +656,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Qfj-nW-wWa" id="aX8-eZ-iBK"/>
+                                    <outlet property="delegate" destination="Qfj-nW-wWa" id="o36-57-7AH"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -668,6 +672,9 @@
                         <viewLayoutGuide key="safeArea" id="JHC-gL-cDw"/>
                     </view>
                     <navigationItem key="navigationItem" id="wC5-oc-nZK"/>
+                    <connections>
+                        <outlet property="peopleTableView" destination="i3c-7N-WYD" id="Ojc-Ve-8Bo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQq-7j-AKg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

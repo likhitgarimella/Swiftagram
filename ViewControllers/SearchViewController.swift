@@ -10,12 +10,16 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var peopleTableView: UITableView!
+    
     var searchBar = UISearchBar()
     
     var users: [AppUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        peopleTableView.backgroundColor = UIColor.white
         
         searchBar.delegate = self
         
@@ -57,4 +61,22 @@ extension SearchViewController: UISearchBarDelegate {
         print(searchBar.text)
     }
     
-}   // #61
+}
+
+extension SearchViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
+        cell.backgroundColor = UIColor.white
+        
+        let user = users[indexPath.row]
+        cell.user = user
+        
+        return cell
+    }
+    
+}   // #83
