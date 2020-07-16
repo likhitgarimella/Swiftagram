@@ -30,6 +30,8 @@ class SearchViewController: UIViewController {
         let searchItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = searchItem
         
+        doSearch()  // displaying when screen loads, to tell user what it is about
+        
     }
     
     func doSearch() {
@@ -82,4 +84,4 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #86
+}   // #88

@@ -68,7 +68,7 @@ class UserApi {
     /// This will be the search text that we get from users
     func queryUsers(withText text: String, completion: @escaping (AppUser) -> Void) {
         
-        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).queryEnding(atValue: text+"\u{f8ff}").observeSingleEvent(of: .value, with: {
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).queryEnding(atValue: text+"\u{f8ff}").queryLimited(toFirst: 2).observeSingleEvent(of: .value, with: {
             snapshot in
             
             /// tranform data snapshot to user object
