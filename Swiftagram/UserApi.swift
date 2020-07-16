@@ -72,7 +72,13 @@ class UserApi {
             snapshot in
             
             /// tranform data snapshot to user object
-            
+            snapshot.children.forEach { (s) in
+                let child = s as! DataSnapshot
+                if let dict = child.value as? [String:Any] {
+                    let user = AppUser.transformUser(dict: dict, key: snapshot.key)
+                    completion(user)
+                }
+            }
             
         })
         
@@ -96,4 +102,4 @@ class UserApi {
         
     }
     
-}   // #100
+}   // #106
