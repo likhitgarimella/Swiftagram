@@ -25,6 +25,14 @@ class SearchViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = searchItem
         
     }
+    
+    func doSearch() {
+        if let searchText = searchBar.text {
+            Api.UserDet.queryUsers(withText: searchText) { (user) in
+                
+            }
+        }
+    }
 
 }
 
@@ -38,4 +46,4 @@ extension SearchViewController: UISearchBarDelegate {
         print(searchBar.text)
     }
     
-}   // #42
+}   // #50
