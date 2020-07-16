@@ -33,7 +33,10 @@ class SearchViewController: UIViewController {
     }
     
     func doSearch() {
-        if let searchText = searchBar.text {
+        if let searchText = searchBar.text?.lowercased() {  /// since, we are searching for lowercased
+            /// remove & empty the array before any new search
+            self.users.removeAll()
+            self.peopleTableView.reloadData()
             Api.UserDet.queryUsers(withText: searchText) { (user) in
                 self.isFollowing(userId: user.id!, completed: {
                     (value) in
@@ -79,4 +82,4 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     
-}   // #83
+}   // #86
