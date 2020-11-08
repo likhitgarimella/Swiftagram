@@ -14,6 +14,7 @@ class Post {
     var caption: String?
     var photoUrl: String?
     // var videoUrl: String?
+    
     var uid: String?
     
     /// Remodel Post class, bcuz it currently doesn't have a post id property
@@ -23,18 +24,6 @@ class Post {
     var likes: Dictionary<String, Any>?
     
     var isLiked: Bool?
-    
-    /*
-    init(captionText: String, photoUrlString: String) {
-        caption = captionText
-        photoUrl = photoUrlString
-    }
-    
-    init(captionText: String, videoUrlString: String) {
-        caption = captionText
-        videoUrl = videoUrlString
-    }
-    */
     
 }
 
@@ -69,11 +58,4 @@ extension Post {
         
     }
     
-    // Video
-    static func transformPostVideo() {
-        
-        
-        
-    }
-    
-}   // #80
+}   // #62
